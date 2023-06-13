@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'campings-frontend';
+  cf = 'coding-factory';
+  name = '';
 }
