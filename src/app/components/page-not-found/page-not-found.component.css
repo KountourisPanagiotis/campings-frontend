@@ -1,0 +1,38 @@
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+  }
+  
+  .content {
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 6em;
+    color: #444;
+  }
+  
+  .message {
+    font-size: 2em;
+    color: #666;
+    margin-top: -50px;
+    margin-bottom: 30px;
+  }
+  
+  .home-button {
+    display: inline-block;
+    font-size: 1em;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #009688;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .home-button:hover {
+    background-color: #00796b;
+  }
+  
