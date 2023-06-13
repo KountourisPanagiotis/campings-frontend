@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { RouterModule , Route } from '@angular/router';
+import { RouterModule , Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { CampingComponent } from './components/camping/camping.component';
 
-// const routes: Routes = [
-// 	{ path: 'path_to_A', component: AComponent },
-// 	{ path: '', component: WelcomeComponent },
-// 	{ path: '**', component: PageNotFoundComponent },
-// ];
+const routes: Routes = [
+	{ path: 'camping', component: CampingComponent },
+  // { path: '', component: WelcomeComponent },
+	// { path: '**', component: PageNotFoundComponent },
+];
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CampingComponent
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule, FormsModule, RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
