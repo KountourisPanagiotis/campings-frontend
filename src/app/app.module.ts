@@ -3,10 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule , Routes } from '@angular/router';
 
+// Angular Material
+import { MatTabsModule } from '@angular/material/tabs';
+
+
 import { AppComponent } from './app.component';
 import { CampingComponent } from './components/camping/camping.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
 	{ path: 'camping', component: CampingComponent },
@@ -20,12 +25,20 @@ const routes: Routes = [
     AppComponent,
     CampingComponent,
     WelcomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    
   ],
   imports: [
-    BrowserModule, FormsModule, RouterModule.forRoot(routes)
+    BrowserModule, 
+    FormsModule, 
+    RouterModule.forRoot(routes), // My routing
+    BrowserAnimationsModule, // Installed auto by Material Angular
+    MatTabsModule, // Material Angular
+    
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
