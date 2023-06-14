@@ -1,5 +1,35 @@
-.booking-container {
-    width: auto;
+.container-fluid {
     height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(to bottom, white, #7ac4f3);
+  }
+  
+  .display-4 {
+    color: #7ac4f3;
+  }
+  
+  /* .bookingNumber {
+    padding-right: 20px;
+  } */
+
+.card {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.label-margin {
+  margin-left: 20px;
+}
+
+.booking-table {
+  margin-top: 20px;
+  padding-top: 50px;
+}
+
+/* .total-cost {
+  text-align: right;
+} */
+
+.total-cost {
+  font-weight: bold;
+  padding-right: 200px;
 }
