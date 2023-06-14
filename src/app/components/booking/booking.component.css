@@ -30,7 +30,20 @@
   margin-top: 15px;
 }
 
-#payMethod {
+#paymethod {
   width: 88px;
 }
 
+.custom-shadow {
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.4);
+}
+
+td {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+th[scope="row"] {
+  vertical-align: middle;
+}
