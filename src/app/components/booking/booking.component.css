@@ -12,7 +12,7 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-#date {
+#date, #cost {
   padding-left: 10px;
 }
 
