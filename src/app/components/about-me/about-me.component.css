@@ -2,9 +2,12 @@
     text-align: center;
     padding: 15px;
     font-family: Arial, sans-serif;
+    height: 100vh;
+    background: linear-gradient(to bottom right, white, #008fe8);
 }
 
 .profile-picture img {
+    margin-top: 120px;
     border-radius: 50%;
     width: 150px;
     height: 150px;
@@ -17,4 +20,13 @@ h2 {
 
 p {
     color: #666;
+}
+
+.info {
+    width: 50vw;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: justify;
+    text-indent: 20px; 
+    margin-bottom: 200px;
 }

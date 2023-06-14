@@ -1,4 +1,5 @@
 .booking-container {
     width: auto;
     height: 100vh;
+    background: linear-gradient(to bottom, white, #7ac4f3);
 }
