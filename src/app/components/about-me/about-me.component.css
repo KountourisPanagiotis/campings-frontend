@@ -7,7 +7,7 @@
 }
 
 .profile-picture img {
-    margin-top: 120px;
+    margin-top: 100px;
     border-radius: 50%;
     width: 150px;
     height: 150px;
@@ -28,5 +28,5 @@ p {
     margin: 0 auto;
     text-align: justify;
     text-indent: 20px; 
-    margin-bottom: 200px;
+    margin-bottom: 100px;
 }
