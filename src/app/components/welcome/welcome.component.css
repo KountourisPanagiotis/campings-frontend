@@ -22,6 +22,21 @@ body {
     /* background-attachment: fixed; */
 }
 
+
+/* Transition */
+.welcome-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 25%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #7ac4f3);
+}
+
+
+
+
 .overlay {
     position: absolute;
     margin-top: 120px;

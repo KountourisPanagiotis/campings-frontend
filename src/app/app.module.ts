@@ -17,6 +17,7 @@ import { AboutMeComponent } from './components/about-me/about-me.component';
 
 const routes: Routes = [
 	{ path: 'camping', component: CampingComponent },
+  { path: 'booking', component: BookingComponent },
   { path: '', component: WelcomeComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
