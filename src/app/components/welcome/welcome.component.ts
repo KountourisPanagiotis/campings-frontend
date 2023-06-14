@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatTabGroup } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-welcome',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent {
+  @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
 
+  navigateToBookNow() {
+    if (this.tabGroup) {
+      this.tabGroup.selectedIndex = 1; // Set the index of the "Book Now" tab (zero-based index)
+    }
+  }
 }
