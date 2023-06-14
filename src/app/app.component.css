@@ -2,6 +2,6 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 9999; /* Ensures it is always on top of other elements */
+    z-index: 9999;
   }
   

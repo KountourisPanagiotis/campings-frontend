@@ -11,7 +11,7 @@ export class WelcomeComponent {
 
   navigateToBookNow() {
     if (this.tabGroup) {
-      this.tabGroup.selectedIndex = 1; // Set the index of the "Book Now" tab (zero-based index)
+      this.tabGroup.selectedIndex = 1;
     }
   }
 }
