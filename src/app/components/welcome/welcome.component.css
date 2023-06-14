@@ -1,41 +1,62 @@
-.welcome-container {
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url('https://e1.pxfuel.com/desktop-wallpaper/932/491/desktop-wallpaper-sea-view-natural-best-view.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    font-family: Arial, sans-serif;
+}
+
+.welcome-container {
+    height: 100vh;
+    background-image: url("../../../assets/images/banner.png");
+    background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
-.header {
+.overlay {
+    position: absolute;
+    margin-top: 120px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    color: white;
+    color: #ffffff;
+    padding: 20px;
 }
 
-.intro-text {
-    width: 60%;
-    color: white;
-    font-size: 1.2em;
-    margin-top: -20px;
-    text-align: center;
+.header h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.header h2 {
+    margin-bottom: 20px;
 }
 
 .start-button {
-    margin-top: 50px;
-    padding: 15px 30px;
-    font-size: 1.5em;
-    color: white;
-    background-color: #009688;
+    margin-top: 60px;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #008CBA;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .start-button:hover {
-    background-color: #00796b;
+    background-color: #00577e;
 }
