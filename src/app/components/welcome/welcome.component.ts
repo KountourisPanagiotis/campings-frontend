@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
+import { TabService } from 'src/app/services/tab.service';
 
 @Component({
   selector: 'app-welcome',
@@ -9,9 +10,9 @@ import { MatTabGroup } from '@angular/material/tabs';
 export class WelcomeComponent {
   @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
 
+  constructor(private tabService: TabService) { }
+
   navigateToBookNow() {
-    if (this.tabGroup) {
-      this.tabGroup.selectedIndex = 1;
-    }
+    this.tabService.switchTab(1); // Switch to Booking tab
   }
 }
