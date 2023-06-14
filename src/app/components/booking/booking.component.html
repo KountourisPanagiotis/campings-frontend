@@ -10,32 +10,33 @@
           <div class="form-group row">
             <!-- Arithmos kratisis (bookCode)-->
             <div class="col-sm-6 d-flex align-items-center">
-              <label for="bookCode" class="mr-2 col-sm-3 text-nowrap">Αριθμός Κράτησης:</label>
+              <label for="bookCode" class="mr-2 col-sm-3">Αριθμός Κράτησης:</label>
               <input type="text" readonly class="col-sm-3 form-control-plaintext" id="bookCode" value="-----">
             </div>
             <!-- Hmerominia (Date)-->
             <div class="col-sm-6 d-flex align-items-center">
-              <label for="date" class="mr-2 text-nowrap ">Ημερομηνία: </label>
+              <label for="date" class="mr-2">Ημερομηνία: </label>
               <input type="text" readonly class="form-control-plaintext label-margin" id="date" value="14/06/2023">
             </div>
           </div>
 
           <!-- ROW 2 -->
           <div class="form-group row">
-            <!-- Kodikos Pliromis (payCode)-->
+            <!-- Tropos pliromis (payMethod)-->
             <div class="col-sm-6 d-flex align-items-center">
-              <label for="payCode" class="mr-2 col-sm-3 text-nowrap">Κωδικός Πληρωμής :</label>
-              <select id="payCode" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
+              <label for="payMethod" class="mr-2 col-sm-3">Τρόπος Πληρωμής :</label>
+              <select id="payMethod" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected>Select</option>
+                <option value="1">PAN</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
               </select>
             </div>
-            <!-- Tropos pliromis (payMethod)-->
+            
+            <!-- Kodikos Pliromis (payCode)-->
             <div class="col-sm-6 d-flex align-items-center">
-              <label for="payMethod" class="mr-2 text-nowrap">Τρόπος πληρωμής:</label>
-              <input type="text" readonly class="form-control-plaintext label-margin" id="payMethod" value="---">
+              <label for="payCode" class="mr-2">Κωδικός πληρωμής:</label>
+              <input type="text" readonly class="form-control-plaintext label-margin" id="payCode" value="---">
             </div>
           </div>
 
@@ -44,22 +45,22 @@
           <div class="form-group row">
             <!-- Eponumo pelati (custSurname)-->
             <div class="col-sm-3 d-flex align-items-center">
-              <label for="custSurname" class="mr-2 col-sm-3 text-nowrap">Επώνυμο πελάτη:</label>
+              <label for="custSurname" class="mr-2 col-sm-3">Επώνυμο πελάτη:</label>
               <input type="text" class="form-control-sm" id="name" placeholder="Επώνυμο">
             </div>
             <!-- Onoma pelati (custName) -->
             <div class="col-sm-3 d-flex align-items-center">
-              <label for="custName" class="mr-2 col-sm-3 text-nowrap">Όνομα πελάτη:</label>
+              <label for="custName" class="mr-2 col-sm-3">Όνομα πελάτη:</label>
               <input type="text" class="form-control-sm" id="custName" placeholder="'Ονομα">
             </div>
             <!-- Kodikos Pelati (custCode) -->
             <div class="col-sm-3 d-flex align-items-center">
-              <label for="custCode" class="mr-2 col-sm-3 text-nowrap">Κωδικός πελάτη:</label>
+              <label for="custCode" class="mr-2 col-sm-3">Κωδικός πελάτη:</label>
               <input type="text" class="form-control-sm" disabled="true" id="custCode" placeholder="-----">
             </div>
             <!-- Tilefono (custPhone) -->
             <div class="col-sm-3 d-flex align-items-center">
-              <label for="custPhone" class="mr-2 col-sm-3 text-nowrap">Τηλέφωνο πελάτη:</label>
+              <label for="custPhone" class="mr-2 col-sm-3">Τηλέφωνο πελάτη:</label>
               <input type="text" class="form-control-sm" id="custCode" placeholder="(+30)">
             </div>            
           </div>
@@ -69,17 +70,17 @@
           <div class="form-group row">
             <!-- Kodikos upalilou (staffNo)-->
             <div class="col-sm-3 d-flex align-items-center">
-              <label for="staffNo" class="mr-2 col-sm-3 text-nowrap">Κωδικός υπαλλήλου:</label>
+              <label for="staffNo" class="mr-2 col-sm-3">Κωδικός υπαλλήλου:</label>
               <input type="text" class="form-control-sm" id="staffNo" placeholder="Κωδικός">
             </div>
             <!-- Eponumo upalilou (staffSurname) -->
             <div class="col-sm-3 d-flex align-items-center">
-              <label for="staffSurname" class="mr-2 col-sm-3 text-nowrap">Επώνυμο υπαλλήλου:</label>
+              <label for="staffSurname" class="mr-2 col-sm-3">Επώνυμο υπαλλήλου:</label>
               <input type="text" class="form-control-sm" id="staffSurname" placeholder="'Ονομα">
             </div>
             <!-- Kodikos Pelati (staffName) -->
             <div class="col-sm-3 d-flex align-items-center">
-              <label for="staffName" class="mr-2 col-sm-3 text-nowrap">Κωδικός πελάτη:</label>
+              <label for="staffName" class="mr-2 col-sm-3">Κωδικός πελάτη:</label>
               <input type="text" class="form-control-sm" disabled="true" id="staffName" placeholder="-----">
             </div>           
           </div>
@@ -147,15 +148,11 @@
             <div class="total-cost row justify-content-end">
               <div class="col-sm-6 d-flex align-items-center">
                 <label for="cost" class="mr-2 text-nowrap font-weight-bold">Συνολικό Κόστος:</label>
-                <input type="text" readonly class="form-control-plaintext label-margin" id="cost" value="14/06/2023">
+                <input type="text" readonly class="form-control-plaintext label-margin" id="cost" value="500">
               </div>
             </div>
 
-          
-
-
-
-
+        
         </form>
       </div>
     </div>

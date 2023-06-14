@@ -7,17 +7,13 @@
   .display-4 {
     color: #7ac4f3;
   }
-  
-  /* .bookingNumber {
-    padding-right: 20px;
-  } */
 
 .card {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.label-margin {
-  margin-left: 20px;
+#date {
+  padding-left: 10px;
 }
 
 .booking-table {
@@ -25,11 +21,16 @@
   padding-top: 50px;
 }
 
-/* .total-cost {
-  text-align: right;
-} */
-
 .total-cost {
   font-weight: bold;
   padding-right: 200px;
 }
+
+.row {
+  margin-top: 15px;
+}
+
+#payMethod {
+  width: 88px;
+}
+
