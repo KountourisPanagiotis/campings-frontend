@@ -1,0 +1,20 @@
+.about-me-container {
+    text-align: center;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+}
+
+.profile-picture img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}

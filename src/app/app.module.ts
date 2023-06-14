@@ -12,6 +12,8 @@ import { CampingComponent } from './components/camping/camping.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BookingComponent } from './components/booking/booking.component';
+import { AboutMeComponent } from './components/about-me/about-me.component';
 
 const routes: Routes = [
 	{ path: 'camping', component: CampingComponent },
@@ -26,6 +28,8 @@ const routes: Routes = [
     CampingComponent,
     WelcomeComponent,
     PageNotFoundComponent,
+    BookingComponent,
+    AboutMeComponent,
     
   ],
   imports: [
