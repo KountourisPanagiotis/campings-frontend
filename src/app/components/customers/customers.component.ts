@@ -14,6 +14,7 @@ export class CustomersComponent implements OnInit {
   custSurname: string = '';
   custName: string = '';
   custPhone: string = '';
+  idToUpdate = -1;
 
   constructor(private customersService: CustomersService, private snackBar: MatSnackBar) { }
 
@@ -70,11 +71,12 @@ export class CustomersComponent implements OnInit {
       return; // Exit the function if surname format is invalid
     }
 
-    // Check if custPhone contains only numbers
-    if (!/^[0-9]+$/.test(newCustomer.custPhone)) {
+    // Check if custPhone contains only numbers, parentheses, plus sign, and minus sign
+    if (!/^[\d()+\- ]+$/.test(newCustomer.custPhone)) {
       this.snackBar.open('Invalid Phone Format', 'Close', { duration: 2000 });
       return; // Exit the function if phone format is invalid
     }
+
 
     this.customersService.insertCustomer(newCustomer).subscribe(
       (data: ICustomer) => {
@@ -101,4 +103,29 @@ export class CustomersComponent implements OnInit {
       }
     );
   }
+
+  updateCustomer(customer: ICustomer): void {
+    // Set the form fields with the selected customer data for updating
+    this.custCode = customer.custCode;
+    this.custName = customer.custName;
+    this.custSurname = customer.custSurname;
+    this.custPhone = customer.custPhone;
+  }
+  
+  deleteCustomer(customer: ICustomer): void {
+    // Perform the delete operation using the customer ID or any other identifier
+    // Call the delete method from the customersService
+    this.customersService.deleteCustomer(customer.custCode).subscribe(
+      () => {
+        console.log('Customer deleted successfully');
+        this.snackBar.open('Customer deleted successfully', 'Close', { duration: 2000 });
+        this.loadCustomers(); // Reload the customer list after deletion
+      },
+      (error: any) => {
+        console.log('Error deleting customer:', error);
+        this.snackBar.open('Error deleting customer', 'Close', { duration: 2000 });
+      }
+    );
+  }
+  
 }
