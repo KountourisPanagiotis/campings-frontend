@@ -2,6 +2,7 @@ export interface ICamping {
     campCode: string;
     campName: string;
     numOfEmp: number;
+    toJSON(): any;
   }
   
   export class Camping implements ICamping {
@@ -15,7 +16,7 @@ export interface ICamping {
       return new Camping(data.campCode, data.campName, data.numOfEmp);
     }
   
-    toJSON(): ICamping {
+    toJSON(): any {
       return {
         campCode: this.campCode,
         campName: this.campName,

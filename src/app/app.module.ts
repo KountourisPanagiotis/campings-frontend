@@ -6,6 +6,9 @@ import { RouterModule , Routes } from '@angular/router';
 // Angular Material
 import { MatTabsModule } from '@angular/material/tabs';
 
+// Services for Http
+import { CustomersService } from './services/customers/customers.service';
+
 
 import { AppComponent } from './app.component';
 import { CampingComponent } from './components/camping/camping.component';
@@ -44,7 +47,8 @@ const routes: Routes = [
     
   ],
   providers: [
-    
+    // Services for Http
+    CustomersService,
   ],
   bootstrap: [AppComponent]
 })
