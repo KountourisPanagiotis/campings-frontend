@@ -36,3 +36,8 @@
     margin-top: 15px;
   }
   
+  .scrollable-table {
+    height: 100vh; /* Adjust the height as per your requirements */
+    /* overflow-y: scroll; */
+  }
+  

@@ -32,11 +32,15 @@ export class CustomersComponent implements OnInit {
   loadCustomers(): void {
     this.customersService.getAllCustomers().subscribe(
       (data: ICustomer[]) => {
-        this.customers = data;
+        this.customers = data.reverse();
       },
       (error: any) => {
         console.log(error);
       }
     );
+  }
+
+  setCustCode():void {
+    
   }
 }
