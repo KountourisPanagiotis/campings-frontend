@@ -81,8 +81,10 @@
             <td>{{ customer.custSurname }}</td>
             <td>{{ customer.custPhone }}</td>
             <td>
-              <button class="btn btn-primary" (click)="updateCustomer(customer)">Update</button>
-              <button class="btn btn-danger" (click)="deleteCustomer(customer)">Delete</button>
+                <div class="btn-group">
+                    <button class="btn btn-primary" (click)="updateCustomer(customer)">Update</button>
+                    <button class="btn btn-danger" (click)="deleteCustomer(customer)">Delete</button>
+                </div>
             </td>
           </tr>
         </tbody>
