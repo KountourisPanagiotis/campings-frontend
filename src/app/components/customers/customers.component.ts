@@ -22,6 +22,7 @@ import { ICustomer } from '../../models/customer.model';
 })
 export class CustomersComponent implements OnInit {
   customers: ICustomer[] = [];
+  custCode: number = 0;
 
   constructor(private customersService: CustomersService) { }
 
@@ -33,6 +34,7 @@ export class CustomersComponent implements OnInit {
     this.customersService.getAllCustomers().subscribe(
       (data: ICustomer[]) => {
         this.customers = data.reverse();
+        this.setCustCode();
       },
       (error: any) => {
         console.log(error);
@@ -40,7 +42,8 @@ export class CustomersComponent implements OnInit {
     );
   }
 
-  setCustCode():void {
-    
+  setCustCode(): void {
+    const maxCustCode = Math.max(...this.customers.map(customer => customer.custCode));
+    this.custCode = maxCustCode + 1;
   }
 }
