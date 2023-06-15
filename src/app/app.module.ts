@@ -10,6 +10,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomersService } from './services/customers/customers.service';
 
+// Service for my base Url
+import { MyBaseUrlService } from './services/my-base-url/my-base-url.service';
+
 // Popup Module
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
@@ -54,6 +57,7 @@ const routes: Routes = [
   providers: [
     // Services for Http
     CustomersService,
+    MyBaseUrlService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,26 +1,19 @@
-// import { Injectable } from '@angular/core';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class CustomersService {
-
-//   constructor() { }
-// }
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ICustomer, Customer } from '../../models/customer.model';
+import { MyBaseUrlService } from '../my-base-url/my-base-url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomersService {
-  private baseUrl = 'http://188.4.177.118:8080/cf_campings_jax_war_exploded/api';
+  private baseUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private myBaseUrlService: MyBaseUrlService) {
+    this.baseUrl = this.myBaseUrlService.myBaseUrl;
+  }
 
   getAllCustomers(): Observable<ICustomer[]> {
     const url = `${this.baseUrl}/customer/`;
