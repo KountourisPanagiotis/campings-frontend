@@ -3,6 +3,8 @@
 ## Athens University of Economics and Business ([AUEB](https://aueb.gr/))
 A [Coding Factory](https://codingfactory.aueb.gr/) @ [AUEB](https://aueb.gr/) Final Web Project. Angular - Typescript - Campings frontend site.
 
+# Currently Under Development
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 
 ## Development server
