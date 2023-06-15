@@ -12,48 +12,48 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ICamping, Camping } from '../../models/camping.model';
+import { ICustomer, Customer } from '../../models/customer.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomersService {
-  private baseUrl = 'http://localhost:8080/cf_campings_jax_war_exploded/api'; // REST API base URL
+  private baseUrl = 'http://localhost:8080/cf_campings_jax_war_exploded/api'; // Update with your REST API base URL
 
   constructor(private http: HttpClient) { }
 
-  getAllCampings(): Observable<ICamping[]> {
-    const url = `${this.baseUrl}/camping/`;
+  getAllCustomers(): Observable<ICustomer[]> {
+    const url = `${this.baseUrl}/customer/`;
     return this.http.get<any[]>(url).pipe(
-      map((data) => data.map((item) => Camping.fromJSON(item)))
+      map((data) => data.map((item) => Customer.fromJSON(item)))
     );
   }
 
-  getCampingByCode(campCode: string): Observable<ICamping> {
-    const url = `${this.baseUrl}/camping/${campCode}`;
+  getCustomerByCode(custCode: number): Observable<ICustomer> {
+    const url = `${this.baseUrl}/customer/${custCode}`;
     return this.http.get<any>(url).pipe(
-      map((data) => Camping.fromJSON(data))
+      map((data) => Customer.fromJSON(data))
     );
   }
 
-  insertCamping(campingDTO: ICamping): Observable<ICamping> {
-    const url = `${this.baseUrl}/camping/`;
-    return this.http.post<any>(url, campingDTO.toJSON()).pipe(
-      map((data) => Camping.fromJSON(data))
+  insertCustomer(customerDTO: ICustomer): Observable<ICustomer> {
+    const url = `${this.baseUrl}/customer/`;
+    return this.http.post<any>(url, customerDTO.toJSON()).pipe(
+      map((data) => Customer.fromJSON(data))
     );
   }
 
-  updateCamping(campingDTO: ICamping): Observable<ICamping> {
-    const url = `${this.baseUrl}/camping/${campingDTO.campCode}`;
-    return this.http.put<any>(url, campingDTO.toJSON()).pipe(
-      map((data) => Camping.fromJSON(data))
+  updateCustomer(customerDTO: ICustomer): Observable<ICustomer> {
+    const url = `${this.baseUrl}/customer/${customerDTO.custCode}`;
+    return this.http.put<any>(url, customerDTO.toJSON()).pipe(
+      map((data) => Customer.fromJSON(data))
     );
   }
 
-  deleteCamping(campCode: string): Observable<ICamping> {
-    const url = `${this.baseUrl}/camping/${campCode}`;
+  deleteCustomer(custCode: number): Observable<ICustomer> {
+    const url = `${this.baseUrl}/customer/${custCode}`;
     return this.http.delete<any>(url).pipe(
-      map((data) => Camping.fromJSON(data))
+      map((data) => Customer.fromJSON(data))
     );
   }
 }
