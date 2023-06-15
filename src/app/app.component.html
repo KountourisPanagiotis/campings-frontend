@@ -1,17 +1,32 @@
 
 <mat-tab-group class="sticky-tab">
+  <!-- Management -->
+  <mat-tab label="Management">
+    <mat-tab-group class="sticky-tab">
+      <mat-tab label="Staff" id="staff1">
+        <app-about-me></app-about-me>  
+      </mat-tab>
+      <mat-tab label="Staff" id="staff2">
+        <app-booking></app-booking>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-tab>
 
+
+  <!-- Booking -->
   <mat-tab label="Booking" id="Booking">
     <app-booking></app-booking>
   </mat-tab>
   
+  <!-- Welcome -->
   <mat-tab label="Welcome" id="Welcome">
     <app-welcome></app-welcome>
   </mat-tab>
 
 
 
-  <!-- <mat-tab label="Management"> Management </mat-tab> -->
+
+  <!-- About me -->
   <mat-tab label="About me"> 
     <app-about-me></app-about-me>  
   </mat-tab>
