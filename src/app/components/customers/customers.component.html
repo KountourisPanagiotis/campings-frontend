@@ -1,86 +1,88 @@
-<div class="container-fluid" disabled>
+<div class="container-fluid">
     <div class="text-center mt-4">
       <h1 class="display-4">Manage Customers</h1>
     </div>
   
     <div class="card mt-4 card-body custom-shadow">
-        <form>
-
-          <!-- ROW 1 -->
-          <div class="form-group row">
-            <!-- Instructions Indicator -->
-            <div class="col-sm-6 d-flex align-items-center">
-              <label class="mr-2 col-sm-5">Εισάγετε Στοιχεία Πελάτη :</label>
-            </div>
+      <form (ngSubmit)="submitForm()" #customerForm="ngForm" [ngClass]="{ 'was-validated': customerForm.submitted }">
+  
+        <!-- ROW 1 -->
+        <div class="form-group row">
+          <!-- Instructions Indicator -->
+          <div class="col-sm-6 d-flex align-items-center">
+            <label class="mr-2 col-sm-5">Εισάγετε Στοιχεία Πελάτη :</label>
           </div>
-
-          <!-- ROW 2 -->
-          <!-- Stoixeia Pelati -->
-          <div class="form-group row">
-            <!-- Kodikos Pelati (custCode) -->
-            <div class="col-sm-3 d-flex align-items-center">
-              <label for="custCode" class="mr-2 col-sm-3">Κωδικός Πελάτη</label>
-              <input type="number" min="0" step="1" class="form-control" id="custCode-select" disabled placeholder="{{ custCode }}"> 
-            </div>
-          </div>
-
-          <!-- ROW 3 -->
-          <!-- Stoixeia upalilou -->
-            <div class="form-group row">
-
-                <!-- Eponumo pelati (custSurname)-->
-                <div class="col-sm-3 d-flex align-items-center">
-                    <label for="custSurname" class="mr-2 col-form-label col-sm-3">Επώνυμο:</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="custSurname">
-                    </div>
-                </div>
-                
-                <!-- Onoma pelati (custName) -->
-                <div class="col-sm-3 d-flex align-items-center">
-                    <label for="custName" class="mr-2 col-form-label col-sm-3">Όνομα:</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="custName">
-                    </div>
-                </div>
-                
-                <!-- Custome telephone (custPhone) -->
-                <div class="col-sm-3 d-flex align-items-center">
-                <label for="custPhone" class="mr-2 col-form-label col-sm-3">Τηλέφωνο:</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="custPhone" placeholder="(+30)21098...">
-                </div>
-            </div>
         </div>
-              <!-- Submit button -->
-              <div class="text-center mt-4">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-        </form>
+  
+        <!-- ROW 2 -->
+        <!-- Stoixeia Pelati -->
+        <div class="form-group row">
+          <!-- Kodikos Pelati (custCode) -->
+          <div class="col-sm-3 d-flex align-items-center">
+            <label for="custCode" class="mr-2 col-sm-3">Κωδικός Πελάτη</label>
+            <input type="number" min="0" step="1" class="form-control" id="custCode-select" disabled placeholder="{{ custCode }}" required>
+          </div>
+        </div>
+  
+        <!-- ROW 3 -->
+  
+        <!-- Stoixeia upalilou -->
+        <div class="form-group row">
+          <!-- Eponumo pelati (custSurname)-->
+          <div class="col-sm-3 d-flex align-items-center">
+            <label for="custSurname" class="mr-2 col-form-label col-sm-3">Επώνυμο:</label>
+            <div class="col-sm-9">
+              <input [(ngModel)]="custSurname" name="custSurname" type="text" class="form-control" id="custSurname" required>
+            </div>
+          </div>
+  
+          <!-- Onoma pelati (custName) -->
+          <div class="col-sm-3 d-flex align-items-center">
+            <label for="custName" class="mr-2 col-form-label col-sm-3">Όνομα:</label>
+            <div class="col-sm-9">
+              <input [(ngModel)]="custName" name="custName" type="text" class="form-control" id="custName" required>
+            </div>
+          </div>
+  
+          <!-- Custome telephone (custPhone) -->
+          <div class="col-sm-3 d-flex align-items-center">
+            <label for="custPhone" class="mr-2 col-form-label col-sm-3">Τηλέφωνο:</label>
+            <div class="col-sm-9">
+              <input [(ngModel)]="custPhone" name="custPhone" type="text" class="form-control" id="custPhone" placeholder="(+30)21098..." required>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Submit button -->
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary" [disabled]="!customerForm.valid">Submit</button>
+        </div>
+  
+      </form>
     </div>
-
+  
     <!-- Table -->
     <div class="form-group row">
-        <div class="col-sm-12">
+      <div class="col-sm-12">
         <table class="table table-striped table-hover mx-auto scrollable-table">
-            <thead>
-                <tr>
-                <th scope="col">Κωδικός Πελάτη</th>
-                <th scope="col">Όνομα πελάτη</th>
-                <th scope="col">Επώνυμο Πελάτη</th>
-                <th scope="col">Τηλέφωνο Πελάτη</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let customer of customers">
-                    <th scope="row">{{ customer.custCode }}</th>
-                    <td>{{ customer.custName }}</td>
-                    <td>{{ customer.custSurname }}</td>
-                    <td>{{ customer.custPhone }}</td>
-                </tr>
-            </tbody>
+          <thead>
+            <tr>
+              <th scope="col">Κωδικός Πελάτη</th>
+              <th scope="col">Όνομα πελάτη</th>
+              <th scope="col">Επώνυμο Πελάτη</th>
+              <th scope="col">Τηλέφωνο Πελάτη</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let customer of customers">
+              <th scope="row">{{ customer.custCode }}</th>
+              <td>{{ customer.custName }}</td>
+              <td>{{ customer.custSurname }}</td>
+              <td>{{ customer.custPhone }}</td>
+            </tr>
+          </tbody>
         </table>
-
-        </div>
+      </div>
     </div>
-</div>
+  </div>
+  

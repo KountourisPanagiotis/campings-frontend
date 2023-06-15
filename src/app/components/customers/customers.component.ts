@@ -1,19 +1,6 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-customers',
-//   templateUrl: './customers.component.html',
-//   styleUrls: ['./customers.component.css']
-// })
-// export class CustomersComponent {
-
-// }
-
-
-
 import { CustomersService } from '../../services/customers/customers.service';
 import { Component, OnInit } from '@angular/core';
-import { ICustomer } from '../../models/customer.model';
+import { ICustomer , Customer} from '../../models/customer.model';
 
 @Component({
   selector: 'app-customers',
@@ -23,6 +10,9 @@ import { ICustomer } from '../../models/customer.model';
 export class CustomersComponent implements OnInit {
   customers: ICustomer[] = [];
   custCode: number = 0;
+  custSurname: string = '';
+  custName: string = '';
+  custPhone: string = '';
 
   constructor(private customersService: CustomersService) { }
 
@@ -45,5 +35,26 @@ export class CustomersComponent implements OnInit {
   setCustCode(): void {
     const maxCustCode = Math.max(...this.customers.map(customer => customer.custCode));
     this.custCode = maxCustCode + 1;
+  }
+
+  submitForm(): void {
+    const newCustomer: ICustomer = new Customer(
+      this.custCode,
+      this.custName,
+      this.custSurname,
+      this.custPhone
+    );
+
+    this.customersService.insertCustomer(newCustomer).subscribe(
+      (data: ICustomer) => {
+        console.log('Customer inserted successfully:', data);
+        // Perform any additional actions or show success message
+        this.loadCustomers();
+      },
+      (error: any) => {
+        console.log('Error inserting customer:', error);
+        // Handle error or show error message
+      }
+    );
   }
 }
