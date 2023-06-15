@@ -10,6 +10,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomersService } from './services/customers/customers.service';
 
+// Popup Module
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { CampingComponent } from './components/camping/camping.component';
@@ -46,6 +48,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes), // My routing
     BrowserAnimationsModule, // Installed auto by Material Angular
     MatTabsModule, // Material Angular
+    MatSnackBarModule, // Material Angular Popup
     
   ],
   providers: [
