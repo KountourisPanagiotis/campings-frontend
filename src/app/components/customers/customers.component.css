@@ -1,0 +1,38 @@
+.container-fluid {
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, white, #7ac4f3);
+  }
+  
+  .display-4 {
+    color: #7ac4f3;
+  }
+  
+  .card {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .customers-table {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .custom-shadow {
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.4);
+  }
+  
+  td {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+  
+  th[scope="row"] , tr{
+    vertical-align: middle;
+    text-align: center;
+  }
+  
+  .row {
+    margin-top: 15px;
+  }
+  
