@@ -72,36 +72,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <!-- Κωδικός Πελάτη (custCode) -->
+                <tr *ngFor="let customer of customers">
+                    <th scope="row">{{ customer.custCode }}</th>
+                    <td>{{ customer.custName }}</td>
+                    <td>{{ customer.custSurname }}</td>
+                    <td>{{ customer.custPhone }}</td>
+                </tr>
+                <!-- <tr>
                 <th scope="row">asdad</th>
-                <!-- Όνομα πελάτη (custName) -->
                 <td>Panagiotis</td>
-                <!-- Επώνυμο Πελάτη (custSurname) -->
                 <td>Kountouris</td>
-                <!-- Τηλέφωνο Πελάτη (custPhone) -->
                 <td>6974554</td>
                 </tr>
                 <tr>
-                <!-- Κωδικός Πελάτη (custCode) -->
                 <th scope="row">asdad</th>
-                <!-- Όνομα πελάτη (custName) -->
                 <td>Panagiotis</td>
-                <!-- Επώνυμο Πελάτη (custSurname) -->
                 <td>Kountouris</td>
-                <!-- Τηλέφωνο Πελάτη (custPhone) -->
                 <td>6974554</td>
                 </tr>
                 <tr>
-                <!-- Κωδικός Πελάτη (custCode) -->
                 <th scope="row">asdad</th>
-                <!-- Όνομα πελάτη (custName) -->
                 <td>Panagiotis</td>
-                <!-- Επώνυμο Πελάτη (custSurname) -->
                 <td>Kountouris</td>
-                <!-- Τηλέφωνο Πελάτη (custPhone) -->
                 <td>6974554</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
 

@@ -18,7 +18,7 @@ import { ICustomer, Customer } from '../../models/customer.model';
   providedIn: 'root'
 })
 export class CustomersService {
-  private baseUrl = 'http://localhost:8080/cf_campings_jax_war_exploded/api'; // Update with your REST API base URL
+  private baseUrl = 'http://188.4.177.118:8080/cf_campings_jax_war_exploded/api';
 
   constructor(private http: HttpClient) { }
 

@@ -7,6 +7,7 @@ import { RouterModule , Routes } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 
 // Services for Http
+import { HttpClientModule } from '@angular/common/http';
 import { CustomersService } from './services/customers/customers.service';
 
 
@@ -36,11 +37,12 @@ const routes: Routes = [
     BookingComponent,
     AboutMeComponent,
     CustomersComponent,
-    
+
   ],
   imports: [
     BrowserModule, 
     FormsModule, 
+    HttpClientModule, // Add HttpClientModule
     RouterModule.forRoot(routes), // My routing
     BrowserAnimationsModule, // Installed auto by Material Angular
     MatTabsModule, // Material Angular
