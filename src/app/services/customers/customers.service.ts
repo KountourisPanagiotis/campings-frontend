@@ -18,7 +18,7 @@ import { ICamping, Camping } from '../../models/camping.model';
   providedIn: 'root'
 })
 export class CustomersService {
-  private baseUrl = 'http://localhost:8080'; // Update with your REST API base URL
+  private baseUrl = 'http://localhost:8080/cf_campings_jax_war_exploded/api'; // REST API base URL
 
   constructor(private http: HttpClient) { }
 
