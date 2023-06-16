@@ -44,17 +44,20 @@ export class CampingComponent implements OnInit {
       this.campName,
       this.numOfEmp
     );
-
+  
     // Check if the camping already exists
     const existingCamping = this.campings.find(
-      camping => camping.campName === newCamping.campName
+      camping => camping.campCode === newCamping.campCode
     );
-
+  
     if (existingCamping) {
-      this.snackBar.open('Camping Already Exists', 'Close', { duration: 2000 });
-      return; // Exit the function if camping already exists
+      this.updateCampingRecord(newCamping);
+    } else {
+      this.insertCampingRecord(newCamping);
     }
-
+  }
+  
+  insertCampingRecord(newCamping: ICamping): void {
     this.campingsService.insertCamping(newCamping).subscribe(
       (data: ICamping) => {
         console.log('Camping inserted successfully:', data);
@@ -64,6 +67,20 @@ export class CampingComponent implements OnInit {
       (error: any) => {
         console.log('Error inserting camping:', error);
         this.snackBar.open('Error inserting camping', 'Close', { duration: 2000 });
+      }
+    );
+  }
+  
+  updateCampingRecord(updatedCamping: ICamping): void {
+    this.campingsService.updateCamping(updatedCamping).subscribe(
+      (data: ICamping) => {
+        console.log('Camping updated successfully:', data);
+        this.snackBar.open('Camping updated successfully', 'Close', { duration: 2000 });
+        this.loadCampings();
+      },
+      (error: any) => {
+        console.log('Error updating camping:', error);
+        this.snackBar.open('Error updating camping', 'Close', { duration: 2000 });
       }
     );
   }
