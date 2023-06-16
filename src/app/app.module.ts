@@ -25,6 +25,7 @@ import { BookingComponent } from './components/booking/booking.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
+import { StaffComponent } from './components/staff/staff.component';
 
 const routes: Routes = [
 	{ path: 'camping', component: CampingComponent },
@@ -44,6 +45,7 @@ const routes: Routes = [
     AboutMeComponent,
     CustomersComponent,
     StatisticsComponent,
+    StaffComponent,
 
   ],
   imports: [
