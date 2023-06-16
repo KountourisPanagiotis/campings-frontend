@@ -13,3 +13,10 @@
     vertical-align: middle;
   }
   
+  .headline {
+    color: #7ac4f3;
+  }
+
+  .align-items-center {
+    padding-top: 10px;
+  }
