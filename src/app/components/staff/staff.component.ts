@@ -13,6 +13,7 @@ export class StaffComponent implements OnInit {
   staffNo: number = 0;
   staffName: string = '';
   staffSurname: string = '';
+  isUpdating = false;
 
   constructor(private staffService: StaffService, private snackBar: MatSnackBar) { }
 
@@ -50,9 +51,9 @@ export class StaffComponent implements OnInit {
         && staff.staffSurname === newStaffMember.staffSurname
     );
 
-    if (existingStaffMember) {
+    if (existingStaffMember && !this.isUpdating) {
       this.snackBar.open('Staff Member Already Exists', 'Close', { duration: 2000 });
-      return; // Exit the function if staff member already exists
+      return; // Exit the function if staff member already exists and not in update mode
     }
 
     // Check if staffName contains only letters
@@ -67,10 +68,19 @@ export class StaffComponent implements OnInit {
       return; // Exit the function if surname format is invalid
     }
 
+    if (this.isUpdating) {
+      this.updateStaffMember(newStaffMember);
+    } else {
+      this.insertStaffMember(newStaffMember);
+    }
+  }
+
+  insertStaffMember(newStaffMember: Staff): void {
     this.staffService.insertStaff(newStaffMember).subscribe(
       (data: IStaff) => {
         console.log('Staff member inserted successfully:', data);
         this.snackBar.open('Staff member inserted successfully', 'Close', { duration: 2000 });
+        this.isUpdating = false;
         this.loadStaffMembers();
       },
       (error: any) => {
@@ -80,11 +90,27 @@ export class StaffComponent implements OnInit {
     );
   }
 
+  updateStaffMember(updatedStaffMember: Staff): void {
+    this.staffService.updateStaff(updatedStaffMember).subscribe(
+      (data: IStaff) => {
+        console.log('Staff member updated successfully:', data);
+        this.snackBar.open('Staff member updated successfully', 'Close', { duration: 2000 });
+        this.isUpdating = false;
+        this.loadStaffMembers();
+      },
+      (error: any) => {
+        console.log('Error updating staff member:', error);
+        this.snackBar.open('Error updating staff member', 'Close', { duration: 2000 });
+      }
+    );
+  }
+
   updateStaff(staff: IStaff): void {
     // Set the form fields with the selected staff data for updating
     this.staffNo = staff.staffNo;
     this.staffName = staff.staffName;
     this.staffSurname = staff.staffSurname;
+    this.isUpdating = true;
   }
   
   deleteStaff(staff: IStaff): void {
@@ -102,5 +128,4 @@ export class StaffComponent implements OnInit {
       }
     );
   }
-  
 }
