@@ -1,24 +1,43 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
+.container-fluid {
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, white, #7ac4f3);
   }
   
-  th,
+  .display-4 {
+    color: #7ac4f3;
+  }
+  
+  .card {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .customers-table {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .custom-shadow {
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.4);
+  }
+  
   td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
   }
   
-  form {
-    margin-bottom: 16px;
+  th[scope="row"],
+  tr {
+    vertical-align: middle;
+    text-align: center;
   }
   
-  input {
-    margin-bottom: 8px;
+  .row {
+    margin-top: 15px;
   }
   
-  button {
-    margin-right: 8px;
+  .scrollable-table {
+    height: 100vh;
   }
   
