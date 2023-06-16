@@ -41,3 +41,6 @@
     height: 100vh;
   }
   
+  .small-input {
+    width: 150px;
+  }

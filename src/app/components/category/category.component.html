@@ -8,27 +8,27 @@
   
         <div class="form-group row">
           <div class="col-sm-6 d-flex align-items-center">
-            <label class="mr-2 col-sm-5">Enter Category Details:</label>
+            <label class="mr-2 col-sm-5">Στοιχεία Κατηγορίας:</label>
           </div>
         </div>
   
         <div class="form-group row">
           <div class="col-sm-3 d-flex align-items-center">
-            <label for="catCode" class="mr-2 col-sm-3">Category Code:</label>
-            <input type="text" class="form-control" id="catCode" [(ngModel)]="catCode" name="catCode" disabled required>
+            <label for="catCode" class="mr-2 col-sm-3">Κωδικός Κατηγορίας:</label>
+            <input type="text" class="form-control small-input" id="catCode" [(ngModel)]="catCode" name="catCode" disabled required>
           </div>
         </div>
   
         <div class="form-group row">
           <div class="col-sm-3 d-flex align-items-center">
-            <label for="areaM2" class="mr-2 col-form-label col-sm-3">Area (m²):</label>
+            <label for="areaM2" class="mr-2 col-form-label col-sm-3">Εμβαδόν (m²):</label>
             <div class="col-sm-9">
               <input [(ngModel)]="areaM2" name="areaM2" type="number" class="form-control" id="areaM2" min="0" step="0.01" required>
             </div>
           </div>
   
           <div class="col-sm-3 d-flex align-items-center">
-            <label for="unitCost" class="mr-2 col-form-label col-sm-3">Unit Cost:</label>
+            <label for="unitCost" class="mr-2 col-form-label col-sm-3">Κόστος μονάδας:</label>
             <div class="col-sm-9">
               <input [(ngModel)]="unitCost" name="unitCost" type="number" class="form-control" id="unitCost" min="0" step="0.01" required>
             </div>
@@ -47,9 +47,9 @@
         <table class="table table-striped table-hover mx-auto scrollable-table">
           <thead>
             <tr>
-              <th scope="col">Category Code</th>
-              <th scope="col">Area (m²)</th>
-              <th scope="col">Unit Cost</th>
+              <th scope="col">Κωδικός Κατηγορίας</th>
+              <th scope="col">Εμβαδόν (m²)</th>
+              <th scope="col">Κόστος Μονάδας</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
