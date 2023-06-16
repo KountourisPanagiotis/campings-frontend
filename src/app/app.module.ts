@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookingComponent } from './components/booking/booking.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { CustomersComponent } from './components/customers/customers.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 const routes: Routes = [
 	{ path: 'camping', component: CampingComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
     BookingComponent,
     AboutMeComponent,
     CustomersComponent,
+    StatisticsComponent,
 
   ],
   imports: [

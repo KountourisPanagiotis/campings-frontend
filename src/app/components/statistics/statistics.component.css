@@ -1,0 +1,24 @@
+/* statistics.component.css */
+@keyframes pulsating {
+    0% {
+      color: #ffcccc; /* Light red */
+    }
+    50% {
+      color: #ff3333; /* Deep red */
+    }
+    100% {
+      color: #ffcccc; /* Light red */
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.pulsate {
+    animation: pulsating 2s linear infinite;
+    font-size: 35px; /* Adjust the font size as needed */
+    text-align: center;
+}
