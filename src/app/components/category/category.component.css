@@ -35,4 +35,8 @@
   .scrollable-table {
     height: 100vh;
   }
+
+  .row {
+    margin-top: 15px;
+  }
   
