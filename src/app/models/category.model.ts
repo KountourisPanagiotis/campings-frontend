@@ -12,7 +12,7 @@ export interface ICategory {
     ) {}
   
     static fromJSON(data: any): Category {
-      return new Category(data.catCode, data.areaM2, data.unitCost);
+      return new Category(data.catCode, parseInt(data.areaM2), parseFloat(data.unitCost));
     }
   
     toJSON(): ICategory {

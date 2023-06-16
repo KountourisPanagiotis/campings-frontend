@@ -34,8 +34,15 @@ export class CategoryComponent implements OnInit {
   }
 
   setCatCode(): void {
-    const maxCatCode = Math.max(...this.categories.map(category => parseInt(category.catCode)));
-    this.catCode = (maxCatCode + 1).toString();
+    const maxCatCodeChar = this.categories.reduce((maxChar: string, category: ICategory) => {
+      if (category.catCode > maxChar) {
+        return category.catCode;
+      }
+      return maxChar;
+    }, 'A'); // Start with 'A' as the initial value
+
+    const nextCharCode = maxCatCodeChar.charCodeAt(0) + 1; // Get the ASCII code of the character and increment by 1
+    this.catCode = String.fromCharCode(nextCharCode); // Convert the ASCII code back to character
   }
 
   submitForm(): void {
@@ -86,5 +93,4 @@ export class CategoryComponent implements OnInit {
       }
     );
   }
-
 }
