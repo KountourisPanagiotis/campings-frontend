@@ -26,6 +26,7 @@ import { AboutMeComponent } from './components/about-me/about-me.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { StaffComponent } from './components/staff/staff.component';
+import { StaffService } from './services/staff/staff.service';
 
 const routes: Routes = [
 	{ path: 'camping', component: CampingComponent },
@@ -62,6 +63,7 @@ const routes: Routes = [
     // Services for Http
     CustomersService,
     MyBaseUrlService,
+    StaffService,
   ],
   bootstrap: [AppComponent]
 })
