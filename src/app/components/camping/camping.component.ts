@@ -13,7 +13,7 @@ export class CampingComponent implements OnInit {
   campCode: string = '';
   campName: string = '';
   numOfEmp: number = 0;
-  idToUpdate = -1;
+  idToUpdate: string | null = null;
 
   constructor(private campingsService: CampingsService, private snackBar: MatSnackBar) { }
 
@@ -38,31 +38,46 @@ export class CampingComponent implements OnInit {
     this.campCode = (maxCampCode + 1).toString();
   }
 
+  disableCampCodeField(): void {
+    const campCodeField = document.getElementById('campCode') as HTMLInputElement;
+    if (campCodeField) {
+      campCodeField.disabled = true;
+    }
+  }
+
+  enableCampCodeField(): void {
+    const campCodeField = document.getElementById('campCode') as HTMLInputElement;
+    if (campCodeField) {
+      campCodeField.disabled = false;
+    }
+  }
+
   submitForm(): void {
     const newCamping: ICamping = new Camping(
       this.campCode,
       this.campName,
       this.numOfEmp
     );
-  
+
     // Check if the camping already exists
     const existingCamping = this.campings.find(
       camping => camping.campCode === newCamping.campCode
     );
-  
+
     if (existingCamping) {
       this.updateCampingRecord(newCamping);
     } else {
       this.insertCampingRecord(newCamping);
     }
   }
-  
+
   insertCampingRecord(newCamping: ICamping): void {
     this.campingsService.insertCamping(newCamping).subscribe(
       (data: ICamping) => {
         console.log('Camping inserted successfully:', data);
         this.snackBar.open('Camping inserted successfully', 'Close', { duration: 2000 });
         this.loadCampings();
+        this.enableCampCodeField();
       },
       (error: any) => {
         console.log('Error inserting camping:', error);
@@ -70,13 +85,14 @@ export class CampingComponent implements OnInit {
       }
     );
   }
-  
+
   updateCampingRecord(updatedCamping: ICamping): void {
     this.campingsService.updateCamping(updatedCamping).subscribe(
       (data: ICamping) => {
         console.log('Camping updated successfully:', data);
         this.snackBar.open('Camping updated successfully', 'Close', { duration: 2000 });
         this.loadCampings();
+        this.enableCampCodeField();
       },
       (error: any) => {
         console.log('Error updating camping:', error);
@@ -90,6 +106,12 @@ export class CampingComponent implements OnInit {
     this.campCode = camping.campCode;
     this.campName = camping.campName;
     this.numOfEmp = camping.numOfEmp;
+  
+    // Disable the campCode input field
+    this.disableCampCodeField();
+    
+    // Set the idToUpdate for comparison
+    this.idToUpdate = camping.campCode.toString();
   }
   
   deleteCamping(camping: ICamping): void {
