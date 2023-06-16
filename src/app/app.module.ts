@@ -27,6 +27,9 @@ import { CustomersComponent } from './components/customers/customers.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { StaffComponent } from './components/staff/staff.component';
 import { StaffService } from './services/staff/staff.service';
+import { CategoryComponent } from './components/category/category.component';
+import { CategoryService } from './services/category/category.service';
+
 
 const routes: Routes = [
 	{ path: 'camping', component: CampingComponent },
@@ -47,6 +50,7 @@ const routes: Routes = [
     CustomersComponent,
     StatisticsComponent,
     StaffComponent,
+    CategoryComponent,
 
   ],
   imports: [
@@ -64,6 +68,7 @@ const routes: Routes = [
     CustomersService,
     MyBaseUrlService,
     StaffService,
+    CategoryService,
   ],
   bootstrap: [AppComponent]
 })
