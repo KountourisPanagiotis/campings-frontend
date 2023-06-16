@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  form {
+    margin-bottom: 16px;
+  }
+  
+  input {
+    margin-bottom: 8px;
+  }
+  
+  button {
+    margin-right: 8px;
+  }
+  

@@ -29,6 +29,7 @@ import { StaffComponent } from './components/staff/staff.component';
 import { StaffService } from './services/staff/staff.service';
 import { CategoryComponent } from './components/category/category.component';
 import { CategoryService } from './services/category/category.service';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 const routes: Routes = [
@@ -51,6 +52,7 @@ const routes: Routes = [
     StatisticsComponent,
     StaffComponent,
     CategoryComponent,
+    PaymentComponent,
 
   ],
   imports: [
