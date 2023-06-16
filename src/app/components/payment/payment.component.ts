@@ -43,43 +43,54 @@ export class PaymentComponent implements OnInit {
       this.payMethod
     );
 
-    // Check if the payment already exists
     const existingPayment = this.payments.find(
-      payment => payment.payMethod === newPayment.payMethod
+      payment => payment.payCode === newPayment.payCode
     );
 
-    if (existingPayment) {
+    if (existingPayment && this.idToUpdate === existingPayment.payCode) {
+      this.paymentService.updatePayment(newPayment).subscribe(
+        (data: IPayment) => {
+          console.log('Payment updated successfully:', data);
+          this.snackBar.open('Payment updated successfully', 'Close', { duration: 2000 });
+          this.loadPayments();
+          this.idToUpdate = -1;
+          this.setPayCode();
+          this.payMethod = '';
+        },
+        (error: any) => {
+          console.log('Error updating payment:', error);
+          this.snackBar.open('Error updating payment', 'Close', { duration: 2000 });
+        }
+      );
+    } else if (!existingPayment) {
+      this.paymentService.insertPayment(newPayment).subscribe(
+        (data: IPayment) => {
+          console.log('Payment inserted successfully:', data);
+          this.snackBar.open('Payment inserted successfully', 'Close', { duration: 2000 });
+          this.loadPayments();
+        },
+        (error: any) => {
+          console.log('Error inserting payment:', error);
+          this.snackBar.open('Error inserting payment', 'Close', { duration: 2000 });
+        }
+      );
+    } else {
       this.snackBar.open('Payment Already Exists', 'Close', { duration: 2000 });
-      return; // Exit the function if payment already exists
     }
-
-    this.paymentService.insertPayment(newPayment).subscribe(
-      (data: IPayment) => {
-        console.log('Payment inserted successfully:', data);
-        this.snackBar.open('Payment inserted successfully', 'Close', { duration: 2000 });
-        this.loadPayments();
-      },
-      (error: any) => {
-        console.log('Error inserting payment:', error);
-        this.snackBar.open('Error inserting payment', 'Close', { duration: 2000 });
-      }
-    );
   }
 
   updatePayment(payment: IPayment): void {
-    // Set the form fields with the selected payment data for updating
     this.payCode = payment.payCode;
     this.payMethod = payment.payMethod;
+    this.idToUpdate = payment.payCode;
   }
 
   deletePayment(payment: IPayment): void {
-    // Perform the delete operation using the payment code or any other identifier
-    // Call the delete method from the paymentService
     this.paymentService.deletePayment(payment.payCode).subscribe(
       () => {
         console.log('Payment deleted successfully');
         this.snackBar.open('Payment deleted successfully', 'Close', { duration: 2000 });
-        this.loadPayments(); // Reload the payment list after deletion
+        this.loadPayments();
       },
       (error: any) => {
         console.log('Error deleting payment:', error);
