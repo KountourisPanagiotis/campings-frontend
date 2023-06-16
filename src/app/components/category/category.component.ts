@@ -13,7 +13,7 @@ export class CategoryComponent implements OnInit {
   catCode: string = '';
   areaM2: number = 0;
   unitCost: number = 0;
-  idToUpdate = -1;
+  idToUpdate: string | null = null;
 
   constructor(private categoryService: CategoryService, private snackBar: MatSnackBar) { }
 
@@ -51,33 +51,55 @@ export class CategoryComponent implements OnInit {
       this.areaM2,
       this.unitCost
     );
-
+  
     const existingCategory = this.categories.find(
-      category => category.catCode === newCategory.catCode
+      category => category.catCode.toString() === newCategory.catCode.toString()
     );
-
-    if (existingCategory) {
+  
+    if (existingCategory && this.idToUpdate !== existingCategory.catCode) {
       this.snackBar.open('Category Already Exists', 'Close', { duration: 2000 });
       return;
     }
-
-    this.categoryService.insertCategory(newCategory).subscribe(
-      (data: ICategory) => {
-        console.log('Category inserted successfully:', data);
-        this.snackBar.open('Category inserted successfully', 'Close', { duration: 2000 });
-        this.loadCategories();
-      },
-      (error: any) => {
-        console.log('Error inserting category:', error);
-        this.snackBar.open('Error inserting category', 'Close', { duration: 2000 });
-      }
-    );
+  
+    if (this.idToUpdate) {
+      this.categoryService.updateCategory(newCategory).subscribe(
+        (data: ICategory) => {
+          console.log('Category updated successfully:', data);
+          this.snackBar.open('Category updated successfully', 'Close', { duration: 2000 });
+          this.loadCategories();
+          // Reset the form
+          this.idToUpdate = null;
+          this.setCatCode();
+          this.areaM2 = 0;
+          this.unitCost = 0;
+        },
+        (error: any) => {
+          console.log('Error updating category:', error);
+          this.snackBar.open('Error updating category', 'Close', { duration: 2000 });
+        }
+      );
+    } else {
+      this.categoryService.insertCategory(newCategory).subscribe(
+        (data: ICategory) => {
+          console.log('Category inserted successfully:', data);
+          this.snackBar.open('Category inserted successfully', 'Close', { duration: 2000 });
+          this.loadCategories();
+        },
+        (error: any) => {
+          console.log('Error inserting category:', error);
+          this.snackBar.open('Error inserting category', 'Close', { duration: 2000 });
+        }
+      );
+    }
   }
 
   updateCategory(category: ICategory): void {
     this.catCode = category.catCode;
     this.areaM2 = category.areaM2;
     this.unitCost = category.unitCost;
+
+    // Set the idToUpdate for comparison
+    this.idToUpdate = category.catCode.toString();
   }
 
   deleteCategory(category: ICategory): void {
