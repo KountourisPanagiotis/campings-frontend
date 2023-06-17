@@ -2,40 +2,47 @@
     height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(to bottom, white, #7ac4f3);
-  }
+}
   
-  .display-4 {
+.display-4 {
     color: #7ac4f3;
-  }
+}
   
-  .card {
+.card {
     background-color: rgba(255, 255, 255, 0.3);
-  }
+}
   
-  .custom-shadow {
+.custom-shadow {
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.4);
-  }
+}
   
-  td {
+td {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-  }
+}
   
-  th[scope="row"], tr {
+th[scope="row"], tr {
     vertical-align: middle;
     text-align: center;
-  }
+}
   
-  .row {
+.row {
     margin-top: 15px;
-  }
+}
   
-  .scrollable-table {
+.scrollable-table {
     height: 100vh;
-  }
+}
   
-  .small-input {
+.small-input {
     width: 150px; /* Adjust the width as needed */
-  }
-  
+}
+
+.spacing  {
+    margin-left: 25px;
+}
+
+label {
+    width: 150px;
+}
