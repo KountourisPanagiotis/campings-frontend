@@ -1,53 +1,41 @@
 
 <mat-tab-group class="sticky-tab">
 
+  <!-- Welcome -->
+  <mat-tab label="Welcome" id="Welcome">
+    <app-welcome></app-welcome>
+  </mat-tab>
 
+  <!-- Booking -->
+  <mat-tab label="Booking" id="Booking">
+    <app-booking></app-booking>
+  </mat-tab>
 
   <!-- Management -->
   <mat-tab label="Management">
     <mat-tab-group class="sticky-tab">
       <mat-tab label="Customers" id="staff1">
-        <!-- <app-payment></app-payment> -->
-        <!-- <app-category></app-category> -->
-        <!-- <app-camping></app-camping>  -->
-        <app-emplacement></app-emplacement>
+          <app-customers></app-customers> 
       </mat-tab>
       <mat-tab label="Staff" id="staff2">
-        <app-booking></app-booking>
+          <app-staff></app-staff>
       </mat-tab>
       <mat-tab label="Categories" id="staff3">
-        <!-- <app-customers></app-customers>  -->
+        <app-category></app-category>
       </mat-tab>
       <mat-tab label="Campings" id="staff4">
-        <app-booking></app-booking>
+          <app-camping></app-camping> 
       </mat-tab>
       <mat-tab label="Payments" id="staff5">
-        <app-booking></app-booking>
+        <app-payment></app-payment>
       </mat-tab>
       <mat-tab label="Emplacements" id="staff6">
-        <!-- <app-customers></app-customers>  -->
-      </mat-tab>
-      <mat-tab label="Spotrentals" id="staff7">
-        <!-- <app-staff></app-staff> -->
-      </mat-tab>
-      <mat-tab label="Customers" id="staff8">
-        <app-customers></app-customers> 
-        <!-- <app-booking></app-booking> -->
+        <app-emplacement></app-emplacement>
       </mat-tab>
       <mat-tab label="Statistics" id="staff9">
         <app-statistics></app-statistics>
       </mat-tab>
     </mat-tab-group>
-  </mat-tab>
-
-  <!-- Booking -->
-  <mat-tab label="Booking" id="Booking">
-    <!-- <app-booking></app-booking> -->
-  </mat-tab>
-  
-  <!-- Welcome -->
-  <mat-tab label="Welcome" id="Welcome">
-    <app-welcome></app-welcome>
   </mat-tab>
 
   <!-- About me -->
