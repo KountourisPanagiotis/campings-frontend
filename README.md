@@ -1,7 +1,7 @@
 # CampingsFrontend
 
 ## Athens University of Economics and Business ([AUEB](https://aueb.gr/)) 🏫 👨‍🎓
-A [Coding Factory](https://codingfactory.aueb.gr/) @ [AUEB](https://aueb.gr/) Final Web Project. Angular - Typescript - Campings frontend site. ⛺
+A [Coding Factory](https://codingfactory.aueb.gr/) @ [AUEB](https://aueb.gr/) Final Web Project. Angular - Typescript - Campings frontend site. ⛺⛺⛺
 
 ## Description
 The Camping Frontend is a web application developed using Angular framework on the front-end and Java on the back-end. The back-end is provided on the [campings-backend](https://github.com/KountourisPanagiotis/campings-backend/blob/main/README.md) repository. The front-end provides a user-friendly interface for managing campgrounds, bookings, customers, staff, payments, and categories. The system allows users to perform various operations such as creating, updating, and deleting records, as well as viewing live statistics and reports.
