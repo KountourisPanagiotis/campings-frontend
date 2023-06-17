@@ -27,6 +27,7 @@ The Camping Frontend is a web application developed using Angular framework on t
 - HttpClientModule: The HttpClientModule is used for making HTTP requests to communicate with the back-end services.
 - RouterModule and Routes: The application utilizes the RouterModule to define and configure the application routes. The routes array in the app.module.ts file specifies the different paths and their corresponding components.
 - MatSnackBarModule: The MatSnackBarModule from Angular Material is used for displaying pop-up messages (snack bars) in the application.
+- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 
 ## Prerequisites
 
@@ -46,7 +47,6 @@ Follow the steps below to set up and run the application:
 ```
 git clone https://github.com/KountourisPanagiotis/campings-frontend.git
 ```
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 2. Front-end Setup
   - Navigate to the campground-management-system/frontend directory.
   - Install dependencies using npm:
