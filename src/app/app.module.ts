@@ -31,6 +31,7 @@ import { StaffService } from './services/staff/staff.service';
 import { CategoryComponent } from './components/category/category.component';
 import { CategoryService } from './services/category/category.service';
 import { PaymentComponent } from './components/payment/payment.component';
+import { EmplacementComponent } from './components/emplacement/emplacement.component';
 
 
 const routes: Routes = [
@@ -54,6 +55,7 @@ const routes: Routes = [
     StaffComponent,
     CategoryComponent,
     PaymentComponent,
+    EmplacementComponent,
 
   ],
   imports: [
