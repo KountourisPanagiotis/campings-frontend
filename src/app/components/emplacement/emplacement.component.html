@@ -9,11 +9,13 @@
       </div>
       <div class="form-group">
         <label for="empNo">Emp No:</label>
-        <input type="number" id="empNo" class="form-control" [(ngModel)]="empNo" name="empNo" required>
+        <input id="empNo" class="form-control" type="number" [(ngModel)]="empNo" name="empNo" required>
       </div>
       <div class="form-group">
         <label for="catCode">Cat Code:</label>
-        <input type="text" id="catCode" class="form-control" [(ngModel)]="selectedCatCode" name="selectedCatCode" required>
+        <select id="catCode" class="form-control" [(ngModel)]="selectedCatCode" name="selectedCatCode" required>
+          <option *ngFor="let catCode of catCodes" [value]="catCode">{{ catCode }}</option>
+        </select>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>

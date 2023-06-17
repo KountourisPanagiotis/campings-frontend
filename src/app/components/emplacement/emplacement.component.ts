@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EmplacementService } from '../../services/emplacement/emplacement.service';
 import { IEmplacement, Emplacement } from '../../models/emplacement.model';
 import { CampingsService } from '../../services/campings/campings.service';
+import { CategoryService } from '../../services/category/category.service';
+import { ICategory } from '../../models/category.model';
 
 @Component({
   selector: 'app-emplacement',
@@ -15,12 +17,18 @@ export class EmplacementComponent implements OnInit {
   selectedCatCode: string = '';
 
   campCodes: string[] = [];
+  catCodes: string[] = [];
 
-  constructor(private emplacementService: EmplacementService, private campingsService: CampingsService) {}
+  constructor(
+    private emplacementService: EmplacementService,
+    private campingsService: CampingsService,
+    private categoryService: CategoryService
+  ) {}
 
   ngOnInit(): void {
     this.loadEmplacements();
     this.loadCampCodes();
+    this.loadCatCodes();
   }
 
   loadEmplacements(): void {
@@ -38,6 +46,17 @@ export class EmplacementComponent implements OnInit {
     this.campingsService.getAllCampings().subscribe(
       (data: any[]) => {
         this.campCodes = data.map(camping => camping.campCode);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  loadCatCodes(): void {
+    this.categoryService.getAllCategories().subscribe(
+      (data: ICategory[]) => {
+        this.catCodes = data.map(category => category.catCode);
       },
       (error: any) => {
         console.log(error);
