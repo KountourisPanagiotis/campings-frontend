@@ -38,3 +38,11 @@
   .small-input {
     width: 150px; /* Adjust the width as needed */
   }
+
+  label {
+    margin-left: 25px;
+  }
+
+  input {
+    margin-left: 20px;
+  }
