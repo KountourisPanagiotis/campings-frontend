@@ -1,44 +1,50 @@
-<div class="container">
+<p>emplacement works!</p>
+<div class="container-fluid">
     <h1 class="text-center">Manage Emplacements</h1>
-    <form (ngSubmit)="submitForm()">
-      <div class="form-group">
-        <label for="campCode">Camp Code:</label>
-        <select id="campCode" class="form-control" [(ngModel)]="selectedCampCode" name="selectedCampCode" required>
-          <option *ngFor="let campCode of campCodes" [value]="campCode">{{ campCode }}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="empNo">Emp No:</label>
-        <input id="empNo" class="form-control" type="number" [(ngModel)]="empNo" name="empNo" required>
-      </div>
-      <div class="form-group">
-        <label for="catCode">Cat Code:</label>
-        <select id="catCode" class="form-control" [(ngModel)]="selectedCatCode" name="selectedCatCode" required>
-          <option *ngFor="let catCode of catCodes" [value]="catCode">{{ catCode }}</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  
-    <table class="table table-striped mt-4">
-      <thead>
-        <tr>
-          <th scope="col">Camp Code</th>
-          <th scope="col">Emp No</th>
-          <th scope="col">Cat Code</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let emplacement of emplacements">
-          <td>{{ emplacement.campCode }}</td>
-          <td>{{ emplacement.empNo }}</td>
-          <td>{{ emplacement.catCode }}</td>
-          <td>
-            <button class="btn btn-danger" (click)="deleteEmplacement(emplacement)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+    <div class="row">
+        <form class="col-md-4 offset-md-4" #emplForm="ngForm" (ngSubmit)="submitForm()">
+            <div class="form-group">
+                <label for="campCode">Camping Code</label>
+                <select class="form-control" id="campCode" [(ngModel)]="selectedCampCode" name="campCode" required>
+                    <option *ngFor="let code of campCodes" [value]="code">{{code}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="empNo">Emplacement Number</label>
+                <input type="number" class="form-control" id="empNo" [(ngModel)]="empNo" name="empNo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="catCode">Category Code</label>
+                <select class="form-control" id="catCode" [(ngModel)]="selectedCatCode" name="catCode" required>
+                    <option *ngFor="let code of catCodes" [value]="code">{{code}}</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Camping Code</th>
+                    <th>Emplacement Number</th>
+                    <th>Category Code</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let emplacement of emplacements">
+                    <td>{{emplacement.campCode}}</td>
+                    <td>{{emplacement.empNo}}</td>
+                    <td>{{emplacement.catCode}}</td>
+                    <td><button (click)="deleteEmplacement(emplacement)" class="btn btn-danger">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

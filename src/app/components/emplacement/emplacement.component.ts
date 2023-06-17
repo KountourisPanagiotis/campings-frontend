@@ -4,7 +4,7 @@ import { IEmplacement, Emplacement } from '../../models/emplacement.model';
 import { CampingsService } from '../../services/campings/campings.service';
 import { CategoryService } from '../../services/category/category.service';
 import { ICategory } from '../../models/category.model';
-import { MatSnackBar } from '@angular/material/snack-bar'; // Snackbar for displaying messages
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-emplacement',
@@ -73,7 +73,6 @@ export class EmplacementComponent implements OnInit {
       this.selectedCatCode
     );
 
-    // Check if the emplacement already exists
     const existingEmplacement = this.emplacements.find(
       emplacement =>
         emplacement.campCode === newEmplacement.campCode &&

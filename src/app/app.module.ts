@@ -57,16 +57,17 @@ const routes: Routes = [
     PaymentComponent,
     EmplacementComponent,
 
+
   ],
   imports: [
     BrowserModule, 
-    FormsModule, 
+    FormsModule,
     HttpClientModule, // Add HttpClientModule
     RouterModule.forRoot(routes), // My routing
     BrowserAnimationsModule, // Installed auto by Material Angular
     MatTabsModule, // Material Angular
     MatSnackBarModule, // Material Angular Popup
-    
+
   ],
   providers: [
     // Services for Http TODO import and include all services in the providers
@@ -75,6 +76,7 @@ const routes: Routes = [
     StaffService,
     CategoryService,
     EmplacementService,
+
   ],
   bootstrap: [AppComponent]
 })
