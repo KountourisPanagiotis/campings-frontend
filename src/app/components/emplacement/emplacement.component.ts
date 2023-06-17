@@ -4,6 +4,7 @@ import { IEmplacement, Emplacement } from '../../models/emplacement.model';
 import { CampingsService } from '../../services/campings/campings.service';
 import { CategoryService } from '../../services/category/category.service';
 import { ICategory } from '../../models/category.model';
+import { MatSnackBar } from '@angular/material/snack-bar'; // Snackbar for displaying messages
 
 @Component({
   selector: 'app-emplacement',
@@ -22,7 +23,8 @@ export class EmplacementComponent implements OnInit {
   constructor(
     private emplacementService: EmplacementService,
     private campingsService: CampingsService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -71,6 +73,19 @@ export class EmplacementComponent implements OnInit {
       this.selectedCatCode
     );
 
+    // Check if the emplacement already exists
+    const existingEmplacement = this.emplacements.find(
+      emplacement =>
+        emplacement.campCode === newEmplacement.campCode &&
+        emplacement.empNo === newEmplacement.empNo &&
+        emplacement.catCode === newEmplacement.catCode
+    );
+
+    if (existingEmplacement) {
+      this.snackBar.open('The emplacement already exists', 'Close', { duration: 2000 });
+      return;
+    }
+
     this.emplacementService.insertEmplacement(newEmplacement).subscribe(
       (data: IEmplacement) => {
         console.log('Emplacement inserted successfully:', data);
@@ -83,14 +98,16 @@ export class EmplacementComponent implements OnInit {
   }
 
   deleteEmplacement(emplacement: IEmplacement): void {
-    this.emplacementService.deleteEmplacement(emplacement.campCode, emplacement.empNo).subscribe(
-      () => {
-        console.log('Emplacement deleted successfully');
-        this.loadEmplacements();
-      },
-      (error: any) => {
-        console.log('Error deleting emplacement:', error);
-      }
-    );
+    this.emplacementService
+      .deleteEmplacement(emplacement.campCode, emplacement.empNo)
+      .subscribe(
+        () => {
+          console.log('Emplacement deleted successfully');
+          this.loadEmplacements();
+        },
+        (error: any) => {
+          console.log('Error deleting emplacement:', error);
+        }
+      );
   }
 }
