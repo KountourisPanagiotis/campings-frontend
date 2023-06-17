@@ -72,19 +72,24 @@ export class EmplacementComponent implements OnInit {
       this.empNo,
       this.selectedCatCode
     );
-
+  
+    if (this.empNo < 1) {
+      this.snackBar.open('The emplacement number must be greater than 0', 'Close', { duration: 2000 });
+      return;
+    }
+  
     const existingEmplacement = this.emplacements.find(
       emplacement =>
         emplacement.campCode === newEmplacement.campCode &&
         emplacement.empNo === newEmplacement.empNo &&
         emplacement.catCode === newEmplacement.catCode
     );
-
+  
     if (existingEmplacement) {
       this.snackBar.open('The emplacement already exists', 'Close', { duration: 2000 });
       return;
     }
-
+  
     this.emplacementService.insertEmplacement(newEmplacement).subscribe(
       (data: IEmplacement) => {
         console.log('Emplacement inserted successfully:', data);
@@ -95,6 +100,7 @@ export class EmplacementComponent implements OnInit {
       }
     );
   }
+  
 
   deleteEmplacement(emplacement: IEmplacement): void {
     this.emplacementService
