@@ -1,8 +1,10 @@
-export interface IEmplacement {
+  export interface IEmplacement {
     campCode: string;
     empNo: number;
     catCode: string;
+    toJSON(): any;
   }
+
   
   export class Emplacement implements IEmplacement {
     constructor(
@@ -15,7 +17,7 @@ export interface IEmplacement {
       return new Emplacement(data.campCode, data.empNo, data.catCode);
     }
   
-    toJSON(): IEmplacement {
+    toJSON(): IEmplacementJSON {
       return {
         campCode: this.campCode,
         empNo: this.empNo,
@@ -27,4 +29,11 @@ export interface IEmplacement {
       return `Emplacements{ campCode='${this.campCode}', empNo=${this.empNo}, catCode='${this.catCode}' }`;
     }
   }
+  
+  interface IEmplacementJSON {
+    campCode: string;
+    empNo: number;
+    catCode: string;
+  }
+  
   
