@@ -4,6 +4,7 @@ export interface IBooking {
     payCode: number;
     custCode: number;
     staffNo: number;
+    toJSON(): any;
   }
   
   export class Booking implements IBooking {
@@ -19,7 +20,7 @@ export interface IBooking {
       return new Booking(data.bookCode, data.bookDt, data.payCode, data.custCode, data.staffNo);
     }
   
-    toJSON(): IBooking {
+    toJSON(): any {
       return {
         bookCode: this.bookCode,
         bookDt: this.bookDt,

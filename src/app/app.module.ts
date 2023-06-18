@@ -13,6 +13,11 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomersService } from './services/customers/customers.service';
 import { EmplacementService } from './services/emplacement/emplacement.service';
+import { BookingService } from './services/booking/booking.service';
+import { CampingsService } from './services/campings/campings.service';
+import { PaymentService } from './services/payment/payment.service';
+import { SpotrentalService } from './services/spotrental/spotrental.service';
+import { ClientTransactionService } from './services/client-transaction/client-transaction.service';
 
 // Service for my base Url
 import { MyBaseUrlService } from './services/my-base-url/my-base-url.service';
@@ -71,6 +76,7 @@ const routes: Routes = [
     MatTabsModule, // Material Angular
     MatSnackBarModule, // Material Angular Popup
     ScrollingModule, // Optimize speed of big tables with VirtualScroll. renders items in view only.
+    
   ],
   providers: [
     // Services for Http TODO import and include all services in the providers
@@ -79,7 +85,12 @@ const routes: Routes = [
     StaffService,
     CategoryService,
     EmplacementService,
-
+    BookingService,
+    CampingsService,
+    PaymentService,
+    SpotrentalService,
+    ClientTransactionService,
+    
   ],
   bootstrap: [AppComponent]
 })
