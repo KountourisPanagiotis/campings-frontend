@@ -74,8 +74,16 @@ export class BookingComponent implements OnInit {
     clearTimeout(this.searchTimeout);
     this.searchTimeout = setTimeout(() => {
       this.selectedCustomer = this.customers.find((customer: ICustomer) => customer.custCode === this.selectedCustCode);
-    }, 100);
+    }, 500);
   }
+  
+  startSearchTimeout(): void {
+    clearTimeout(this.searchTimeout);
+    this.searchTimeout = setTimeout(() => {
+      this.selectedCustomer = this.customers.find((customer: ICustomer) => customer.custCode === this.selectedCustCode);
+    }, 500);
+  }
+  
 
   loadStaff(): void {
     
