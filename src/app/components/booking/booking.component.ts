@@ -41,6 +41,10 @@ export class BookingComponent implements OnInit {
   category: ICategory[] = [];
   selectedCategory: ICategory[] = [];
   selectedCampCode: string | null = null;
+  selectedEmpNo: number | null = null;
+  selectedCatCode: string | null = null;
+  selectedArea: number | null = null;
+  selectedUnitCost: number | null = null;
 
   constructor(
     private clientTransactionService: ClientTransactionService,
@@ -158,7 +162,13 @@ export class BookingComponent implements OnInit {
   }
 
 
+  // using the selectedCampCode and the selectedEmpNo we will find through emplacementsService the selectedCatCode.
+  // then with the catcode known, through categoriesService we can find the selectedArea and the selectedUnitCost.
+  // Then we set the value of selectedCatCode at the input with id catCode.
+  // Then we set the value of selectedArea at the input with id area.
+  // Then we set the value of selectedUnitCost at the input with id unitCost.
+  updateCatCodeAreaUnitCost(): void {
 
-
+  }
 
 }

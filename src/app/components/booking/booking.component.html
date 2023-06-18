@@ -133,7 +133,8 @@
         
                 <!-- emplacement (empNo) -->
                 <td>
-                  <input type="number" min="0" step="1" class="form-control" id="empNo" placeholder="0">
+                  <input type="number" min="0" step="1" class="form-control" id="empNo" placeholder="0"
+                  [(ngModel)]="selectedEmpNo" (input)="updateCatCodeAreaUnitCost()">
                 </td>
                 <td>
                   <!-- categories (CatCode) -->
@@ -145,7 +146,7 @@
                 </td>
                 <td>
                   <!-- unitcost -->
-                  <label>-----</label>
+                  <input class="form-control-plaintext label-margin" readonly id="unitCost" >
                 </td>
                 <td>
                   <input type="text" readonly class="form-control-plaintext label-margin" id="startDate"
