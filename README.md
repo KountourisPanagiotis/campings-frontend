@@ -7,12 +7,13 @@ A [Coding Factory](https://codingfactory.aueb.gr/) @ [AUEB](https://aueb.gr/) Fi
 The Camping Frontend is a web application developed using Angular framework on the front-end and Java on the back-end. The back-end is provided on the [campings-backend](https://github.com/KountourisPanagiotis/campings-backend/blob/main/README.md) repository. The front-end provides a user-friendly interface for managing bookings, customers, staff, campings, payments, emplacements and categories. The system allows users to perform various operations such as creating, updating, and deleting records, as well as viewing live statistics and reports.
 
 ## Features
-- Booking Management: Create and manage bookings for customers.
-- Customer Management: Manage customer information and track bookings.
+- Booking Management: Create and manage booking for customers. (Each booking may consist of many emplacement spot arrangements)
+- Customer Management: Manage customer information.
 - Staff Management: Add and update staff members.
-- Campings Management: Add, update, and delete campings.
-- Payment Management: Record and track payments.
-- Category Management: Manage different categories for campings.
+- Campings Management: Add, update, and delete different company camping establishments.
+- Payment Management: insert or alter payment methods.
+- Category Management: Manage different categories for camping spots.
+- Emplacements Management: Management of combination of campings and categories for all the company through a unified system. 
 - Statistics: Generate Live Power Bi statistics and reports for bookings and payments. Live connection to database. 60 mins refresh rate.  
 
 ## Technologies Used
