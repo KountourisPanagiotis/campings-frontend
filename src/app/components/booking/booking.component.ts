@@ -1,11 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClientTransactionService } from '../../services/client-transaction/client-transaction.service';
 import { SpotrentalService } from '../../services/spotrental/spotrental.service';
 import { BookingService } from '../../services/booking/booking.service';
 import { PaymentService } from '../../services/payment/payment.service';
+import { CustomersService } from '../../services/customers/customers.service';
+import { Customer, ICustomer } from 'src/app/models/customer.model';
+import { StaffService } from 'src/app/services/staff/staff.service';
+import { Staff, IStaff } from 'src/app/models/staff.model';
+import { CampingsService } from 'src/app/services/campings/campings.service';
+import { Camping, ICamping } from 'src/app/models/camping.model';
+import { EmplacementService } from 'src/app/services/emplacement/emplacement.service';
+import { Emplacement, IEmplacement } from 'src/app/models/emplacement.model';
 import { IBooking } from '../../models/booking.model';
 import { IPayment } from '../../models/payment.model';
+
 
 @Component({
   selector: 'app-booking',
@@ -16,19 +24,29 @@ export class BookingComponent implements OnInit {
   bookCode: number = 0; // Initialize bookCode with a default value
   date: Date = new Date(); // Initialize date with the current date
   payments: IPayment[] = []; // Holds the payment options
-  selectedPayCode: number = 0; // Holds the selected payCode value
+  selectedCustCode: number = 0; // Holds the selected customer code
+  selectedCustomer: ICustomer | undefined; // Holds the selected customer details
+  selectedStaff: IStaff | undefined; // Holds the selected staff details.
+  selectedCamping: ICamping | undefined; // Holds the selected camping details.
+  selectedEmplacement: IEmplacement | undefined; // Holds the selected emplacement details.
 
   constructor(
-    private snackBar: MatSnackBar,
     private clientTransactionService: ClientTransactionService,
     private spotrentalService: SpotrentalService,
     private bookingService: BookingService,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private customersService: CustomersService,
+    private staffService: StaffService,
+    private emplacementService: EmplacementService,
+    private campingsService: CampingsService,
   ) {}
 
   ngOnInit(): void {
     this.generateBookCode();
     this.loadPayments();
+    this.loadCustomers();
+    this.loadStaff();
+    this.loadCampings();
   }
 
   generateBookCode(): void {
@@ -44,17 +62,18 @@ export class BookingComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
-    if (this.selectedPayCode === 0) {
-      this.snackBar.open('Please select a payment method.', 'Close', {
-        duration: 3000
-      });
-      return;
-    }
-
-    // Form submission logic
-    // ...
+  loadCustomers(): void {
+    this.customersService.getAllCustomers().subscribe((customers: ICustomer[]) => {
+      this.selectedCustomer = customers[0];
+    });
   }
 
-  // Rest of the component code...
+  loadStaff(): void {
+    
+  }
+
+  loadCampings(): void {
+
+  }
+
 }

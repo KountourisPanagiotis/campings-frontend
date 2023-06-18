@@ -1,11 +1,11 @@
-<div class="container-fluid" disabled>
+<div class="container-fluid">
   <div class="text-center mt-4">
     <h1 class="display-4">Fill in the Booking Form</h1>
   </div>
 
   <div class="card mt-4">
     <div class="card-body custom-shadow">
-      <form (ngSubmit)="onSubmit()">
+      <form>
         <!-- ROW 1 -->
         <div class="form-group row">
           <!-- Arithmos kratisis (bookCode)-->
@@ -26,8 +26,8 @@
           <!-- Tropos pliromis (paymethod)-->
           <div class="col-sm-6 d-flex align-items-center">
             <label for="paymethod" class="mr-2 col-sm-3">Τρόπος Πληρωμής :</label>
-            <select id="paymethod" class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="selectedPayCode" name="paymethod">
-              <option selected disabled>Select</option>
+            <select id="paymethod" class="form-select form-select-sm" aria-label=".form-select-sm example">
+              <option selected>Select</option>
               <option *ngFor="let payment of payments" [value]="payment.payCode">{{ payment.payMethod }}</option>
             </select>
           </div>
@@ -45,25 +45,25 @@
           <!-- Kodikos Pelati (custCode) -->
           <div class="col-sm-3 d-flex align-items-center">
             <label for="custCode" class="mr-2 col-sm-3">Κωδικός πελάτη:</label>
-            <input type="number" min="0" step="1" class="form-control" id="custCode-select" placeholder="Try 4845">
+            <input type="number" min="0" step="1" class="form-control" id="custCode" placeholder="Enter custCode" [(ngModel)]="selectedCustCode">
           </div>
 
           <!-- Eponumo pelati (custSurname)-->
           <div class="col-sm-3 d-flex align-items-center">
             <label for="custSurname" class="mr-2 col-sm-3">Επώνυμο πελάτη:</label>
-            <input type="text" class="form-control" disabled="true" id="name" placeholder="-----">
+            <input type="text" class="form-control" disabled="true" id="custSurname" [value]="selectedCustomer?.custSurname">
           </div>
 
           <!-- Onoma pelati (custName) -->
           <div class="col-sm-3 d-flex align-items-center">
             <label for="custName" class="mr-2 col-sm-3">Όνομα πελάτη:</label>
-            <input type="text" class="form-control" disabled="true" id="custName" placeholder="-----">
+            <input type="text" class="form-control" disabled="true" id="custName" [value]="selectedCustomer?.custName">
           </div>
 
           <!-- Tilefono (custPhone) -->
           <div class="col-sm-3 d-flex align-items-center">
             <label for="custPhone" class="mr-2 col-sm-3">Τηλέφωνο πελάτη:</label>
-            <input type="text" class="form-control" disabled="true" id="custCode" placeholder="-----">
+            <input type="text" class="form-control" disabled="true" id="custPhone" [value]="selectedCustomer?.custPhone">
           </div>
         </div>
 
@@ -137,7 +137,7 @@
                   <label>-----</label>
                 </td>
                 <td>
-                  12/06/2019
+                  <input type="text" readonly class="form-control-plaintext label-margin" id="startDate" [value]="date | date:'dd/MM/yyyy'">
                 </td>
                 <td>
                   <input type="date" class="form-control" id="endDate">
@@ -162,7 +162,6 @@
         <div class="text-center mt-4">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-
       </form>
     </div>
   </div>
