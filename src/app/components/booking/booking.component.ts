@@ -14,21 +14,22 @@ import { Emplacement, IEmplacement } from 'src/app/models/emplacement.model';
 import { IBooking } from '../../models/booking.model';
 import { IPayment } from '../../models/payment.model';
 
-
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-  bookCode: number = 0; // Initialize bookCode with a default value
-  date: Date = new Date(); // Initialize date with the current date
-  payments: IPayment[] = []; // Holds the payment options
-  selectedCustCode: number = 0; // Holds the selected customer code
-  selectedCustomer: ICustomer | undefined; // Holds the selected customer details
-  selectedStaff: IStaff | undefined; // Holds the selected staff details.
-  selectedCamping: ICamping | undefined; // Holds the selected camping details.
-  selectedEmplacement: IEmplacement | undefined; // Holds the selected emplacement details.
+  bookCode: number = 0;
+  date: Date = new Date();
+  payments: IPayment[] = [];
+  selectedCustCode: number = 0;
+  selectedCustomer: ICustomer | undefined;
+  selectedStaff: IStaff | undefined;
+  selectedCamping: ICamping | undefined;
+  selectedEmplacement: IEmplacement | undefined;
+  customers: ICustomer[] = [];
+  searchTimeout: any;
 
   constructor(
     private clientTransactionService: ClientTransactionService,
@@ -51,8 +52,8 @@ export class BookingComponent implements OnInit {
 
   generateBookCode(): void {
     this.bookingService.getAllBookings().subscribe((bookings: IBooking[]) => {
-      const lastBooking = bookings[bookings.length - 1]; // Get the last entry
-      this.bookCode = lastBooking.bookCode + 1; // Increment the bookCode by 1
+      const lastBooking = bookings[bookings.length - 1];
+      this.bookCode = lastBooking.bookCode + 1;
     });
   }
 
@@ -64,8 +65,16 @@ export class BookingComponent implements OnInit {
 
   loadCustomers(): void {
     this.customersService.getAllCustomers().subscribe((customers: ICustomer[]) => {
-      this.selectedCustomer = customers[0];
+      this.customers = customers;
+      console.log(this.customers);
     });
+  }
+
+  searchCustomerByCode(): void {
+    clearTimeout(this.searchTimeout);
+    this.searchTimeout = setTimeout(() => {
+      this.selectedCustomer = this.customers.find((customer: ICustomer) => customer.custCode === this.selectedCustCode);
+    }, 100);
   }
 
   loadStaff(): void {
@@ -75,5 +84,4 @@ export class BookingComponent implements OnInit {
   loadCampings(): void {
 
   }
-
 }
