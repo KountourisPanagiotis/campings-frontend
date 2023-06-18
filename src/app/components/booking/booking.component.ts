@@ -10,10 +10,12 @@ import { Staff, IStaff } from 'src/app/models/staff.model';
 import { CampingsService } from 'src/app/services/campings/campings.service';
 import { Camping, ICamping } from 'src/app/models/camping.model';
 import { EmplacementService } from 'src/app/services/emplacement/emplacement.service';
-// import { Emplacement, IEmplacement } from 'src/app/models/emplacement.model';
+import { Emplacement, IEmplacement } from 'src/app/models/emplacement.model';
 import { IBooking } from '../../models/booking.model';
 import { IPayment } from '../../models/payment.model';
 import { Observable  } from 'rxjs';
+import { CategoryService } from 'src/app/services/category/category.service';
+import { Category, ICategory } from 'src/app/models/category.model';
 
 @Component({
   selector: 'app-booking',
@@ -29,13 +31,15 @@ export class BookingComponent implements OnInit {
   selectedStaffNo: number | null = null;
   selectedStaff: IStaff | undefined;
   selectedCamping: string | null = null;
-  // selectedEmplacement: IEmplacement | undefined;
+  selectedEmplacement: IEmplacement | undefined;
   customers: ICustomer[] = [];
   staff: IStaff[] = [];
   searchTimeout: any;
   selectedPayMethod: string | null = null;
   selectedPayCode: number | null = null;
   campings: ICamping[] = [];
+  category: ICategory[] = [];
+  selectedCategory: ICategory[] = [];
 
   constructor(
     private clientTransactionService: ClientTransactionService,
@@ -46,6 +50,7 @@ export class BookingComponent implements OnInit {
     private staffService: StaffService,
     private emplacementService: EmplacementService,
     private campingsService: CampingsService,
+    private categoryService: CategoryService,
   ) {}
 
   ngOnInit(): void {
@@ -54,6 +59,7 @@ export class BookingComponent implements OnInit {
     this.loadCustomers();
     this.loadStaff();
     this.loadCampings();
+    this.loadCategories();
   }
 
   generateBookCode(): void {
@@ -143,4 +149,15 @@ export class BookingComponent implements OnInit {
       this.campings = campings;
     });
   }
+
+  loadCategories(): void {
+    this.categoryService.getAllCategories().subscribe((category: ICategory[]) => {
+      this.category = category;
+    });
+  }
+
+
+
+
+
 }

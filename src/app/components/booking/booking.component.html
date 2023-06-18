@@ -48,26 +48,26 @@
   <!-- Kodikos Pelati (custCode) -->
   <div class="col-sm-3 d-flex align-items-center">
     <label for="custCode" class="mr-2 col-sm-3">Κωδικός πελάτη:</label>
-    <input type="number" min="0" step="1" class="form-control" id="custCode" name="custCode" placeholder="3847 - 4846"
+    <input type="number" min="0" step="1" class="form-control" id="custCode" name="custCode" placeholder="1 - 4846"
       [(ngModel)]="selectedCustCode" (input)="searchCustomerByCode()">
   </div>
 
   <!-- Eponumo pelati (custSurname) -->
   <div class="col-sm-3 d-flex align-items-center">
     <label for="custSurname" class="mr-2 col-sm-3">Επώνυμο πελάτη:</label>
-    <input type="text" class="form-control" id="custSurname" name="custSurname" [value]="selectedCustomer?.custSurname">
+    <input type="text" class="form-control" id="custSurname" disabled="true" name="custSurname" [value]="selectedCustomer?.custSurname">
   </div>
 
   <!-- Onoma pelati (custName) -->
   <div class="col-sm-3 d-flex align-items-center">
     <label for="custName" class="mr-2 col-sm-3">Όνομα πελάτη:</label>
-    <input type="text" class="form-control" id="custName" name="custName" [value]="selectedCustomer?.custName">
+    <input type="text" class="form-control" id="custName" disabled="true" name="custName" [value]="selectedCustomer?.custName">
   </div>
 
   <!-- Tilefono (custPhone) -->
   <div class="col-sm-3 d-flex align-items-center">
     <label for="custPhone" class="mr-2 col-sm-3">Τηλέφωνο πελάτη:</label>
-    <input type="text" class="form-control" id="custPhone" name="custPhone" [value]="selectedCustomer?.custPhone">
+    <input type="text" class="form-control" id="custPhone" disabled="true" name="custPhone" [value]="selectedCustomer?.custPhone">
   </div>
 </div>
 
@@ -130,17 +130,17 @@
             [value]="selectedCamping || '-----'">
         </td>
         
-                
+                <!-- emplacement (empNo) -->
                 <td>
-                  <input type="number" min="0" step="1" class="form-control" id="empNo-select" placeholder="0">
+                  <input type="number" min="0" step="1" class="form-control" id="empNo" placeholder="0">
                 </td>
                 <td>
-                  <!-- CatCode -->
-                  <label>-----</label>
+                  <!-- categories (CatCode) -->
+                  <input class="form-control-plaintext label-margin" readonly id="catCode" >
                 </td>
                 <td>
-                  <!-- area-M2 -->
-                  <label>-----</label>
+                  <!-- categories (area) -->
+                  <input class="form-control-plaintext label-margin" readonly id="area" >
                 </td>
                 <td>
                   <!-- unitcost -->
