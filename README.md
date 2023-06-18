@@ -20,7 +20,8 @@ The Camping Frontend is a web application developed using Angular framework on t
 - Front-end: ***Angular*** 15.2.8
 - Back-end: ***Java*** 11.0.16.1
 - Database: ***MySQL***
-- UI Framework: ***Angular Material***
+- Styling and Responsive Design: ***Bootstrap***
+- UI extra tools Framework: ***Angular Material***
 - ***Node.js***: v18.13.0
 - ***npm***: v8.19.3
 - ***RxJS***: 7.8.1
