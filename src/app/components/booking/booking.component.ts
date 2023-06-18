@@ -33,6 +33,8 @@ export class BookingComponent implements OnInit {
   customers: ICustomer[] = [];
   staff: IStaff[] = [];
   searchTimeout: any;
+  selectedPayMethod: string | null = null;
+  selectedPayCode: number | null = null;
 
   constructor(
     private clientTransactionService: ClientTransactionService,
@@ -105,6 +107,35 @@ export class BookingComponent implements OnInit {
     }, 500);
     console.log(this.selectedStaff?.staffName + ' ' + this.selectedStaff?.staffSurname + ' ' + this.selectedStaff?.staffNo);
   }
+
+  // updatePayCode(): void {
+  //   if (this.selectedPayMethod !== null) {
+  //     const payment = this.payments.find((payment: IPayment) => payment.payMethod === this.selectedPayMethod);
+  //     if (payment) {
+  //       this.selectedPayCode = payment.payCode;
+  //     } else {
+  //       this.selectedPayCode = null;
+  //     }
+  //   } else {
+  //     this.selectedPayCode = null;
+  //   }
+  // }
+
+  updatePayCode(): void {
+    console.log('Printing on console the selected Paymethod:', this.selectedPayMethod)
+    if (this.selectedPayMethod !== null) {
+      const payment = this.payments.find((payment: IPayment) => payment.payMethod === this.selectedPayMethod);
+      if (payment) {
+        this.selectedPayCode = payment.payCode;
+      } else {
+        this.selectedPayCode = null;
+      }
+    } else {
+      this.selectedPayCode = null;
+    }
+  }
+  
+  
 
   loadCampings(): void {
   }

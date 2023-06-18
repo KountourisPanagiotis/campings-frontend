@@ -8,94 +8,94 @@
       <form>
         <!-- ROW 1 -->
         <div class="form-group row">
-          <!-- Arithmos kratisis (bookCode)-->
+          <!-- Arithmos kratisis (bookCode) -->
           <div class="col-sm-6 d-flex align-items-center">
             <label for="bookCode" class="mr-2 col-sm-3">Αριθμός Κράτησης:</label>
             <input type="text" [value]="bookCode" readonly class="col-sm-3 form-control-plaintext" id="bookCode">
           </div>
 
-          <!-- Hmerominia (Date)-->
+          <!-- Hmerominia (Date) -->
           <div class="col-sm-6 d-flex align-items-center">
             <label for="date" class="mr-2">Ημερομηνία: </label>
-            <input type="text" readonly class="form-control-plaintext label-margin" id="date" [value]="date | date:'dd/MM/yyyy'">
+            <input type="text" readonly class="form-control-plaintext label-margin" id="date"
+              [value]="date | date:'dd/MM/yyyy'">
           </div>
         </div>
 
         <!-- ROW 2 -->
         <div class="form-group row">
-          <!-- Tropos pliromis (paymethod)-->
+          <!-- Tropos pliromis (paymethod) -->
           <div class="col-sm-6 d-flex align-items-center">
             <label for="paymethod" class="mr-2 col-sm-3">Τρόπος Πληρωμής :</label>
-            <select id="paymethod" class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <select id="paymethod" name="payMethod" class="form-select form-select-sm" aria-label=".form-select-sm example"
+              [(ngModel)]="selectedPayMethod" (change)="updatePayCode()">
               <option selected>Select</option>
-              <option *ngFor="let payment of payments" [value]="payment.payCode">{{ payment.payMethod }}</option>
+              <option *ngFor="let payment of payments" [value]="payment.payMethod">{{ payment.payMethod }}</option>
             </select>
           </div>
 
-          <!-- Kodikos Pliromis (payCode)-->
+          <!-- Kodikos Pliromis (payCode) -->
           <div class="col-sm-6 d-flex align-items-center">
             <label for="payCode" class="mr-2">Κωδικός πληρωμής:</label>
-            <input type="text" readonly class="form-control-plaintext label-margin" id="payCode" value="---">
+            <input type="text" readonly class="form-control-plaintext label-margin" id="payCode"
+              [value]="selectedPayCode">
           </div>
         </div>
 
-        <!-- ROW 3 -->
-        <!-- Stoixeia Pelati -->
-        <div class="form-group row">
-          <!-- Kodikos Pelati (custCode) -->
-          <div class="col-sm-3 d-flex align-items-center">
-            <label for="custCode" class="mr-2 col-sm-3">Κωδικός πελάτη:</label>
-            <input type="number" min="0" step="1" class="form-control" id="custCode" name="custCode" placeholder="3847 - 4846" [(ngModel)]="selectedCustCode" (input)="searchCustomerByCode()">
-          </div>
+       <!-- ROW 3 -->
+<!-- Stoixeia Pelati -->
+<div class="form-group row">
+  <!-- Kodikos Pelati (custCode) -->
+  <div class="col-sm-3 d-flex align-items-center">
+    <label for="custCode" class="mr-2 col-sm-3">Κωδικός πελάτη:</label>
+    <input type="number" min="0" step="1" class="form-control" id="custCode" name="custCode" placeholder="3847 - 4846"
+      [(ngModel)]="selectedCustCode" (input)="searchCustomerByCode()">
+  </div>
 
-          <!-- Eponumo pelati (custSurname) -->
-          <div class="col-sm-3 d-flex align-items-center">
-            <label for="custSurname" class="mr-2 col-sm-3">Επώνυμο πελάτη:</label>
-            <input type="text" class="form-control" id="custSurname" [value]="selectedCustomer?.custSurname">
-          </div>
+  <!-- Eponumo pelati (custSurname) -->
+  <div class="col-sm-3 d-flex align-items-center">
+    <label for="custSurname" class="mr-2 col-sm-3">Επώνυμο πελάτη:</label>
+    <input type="text" class="form-control" id="custSurname" name="custSurname" [value]="selectedCustomer?.custSurname">
+  </div>
 
-          <!-- Onoma pelati (custName) -->
-          <div class="col-sm-3 d-flex align-items-center">
-            <label for="custName" class="mr-2 col-sm-3">Όνομα πελάτη:</label>
-            <input type="text" class="form-control" id="custName" [value]="selectedCustomer?.custName">
-          </div>
+  <!-- Onoma pelati (custName) -->
+  <div class="col-sm-3 d-flex align-items-center">
+    <label for="custName" class="mr-2 col-sm-3">Όνομα πελάτη:</label>
+    <input type="text" class="form-control" id="custName" name="custName" [value]="selectedCustomer?.custName">
+  </div>
 
-          <!-- Tilefono (custPhone) -->
-          <div class="col-sm-3 d-flex align-items-center">
-            <label for="custPhone" class="mr-2 col-sm-3">Τηλέφωνο πελάτη:</label>
-            <input type="text" class="form-control" id="custPhone" [value]="selectedCustomer?.custPhone">
-          </div>
-        </div>
+  <!-- Tilefono (custPhone) -->
+  <div class="col-sm-3 d-flex align-items-center">
+    <label for="custPhone" class="mr-2 col-sm-3">Τηλέφωνο πελάτη:</label>
+    <input type="text" class="form-control" id="custPhone" name="custPhone" [value]="selectedCustomer?.custPhone">
+  </div>
+</div>
+
 
         <!-- ROW 4 -->
         <!-- Stoixeia upalilou -->
         <div class="form-group row">
-        <!-- Kodikos upalilou (staffNo)-->
-        <div class="col-sm-3 d-flex align-items-center">
-          <label for="staffNo" class="mr-2 col-sm-3">Κωδικός υπαλλήλου:</label>
-          <input type="number" class="form-control" id="staffNo" name="staffNo" [placeholder]="'4945 - 5043'" [(ngModel)]="selectedStaffNo" (input)="searchStaffByNo()">
+          <!-- Kodikos upalilou (staffNo) -->
+          <div class="col-sm-3 d-flex align-items-center">
+            <label for="staffNo" class="mr-2 col-sm-3">Κωδικός υπαλλήλου:</label>
+            <input type="number" class="form-control" id="staffNo" name="staffNo" [placeholder]="'4945 - 5043'"
+              [(ngModel)]="selectedStaffNo" (input)="searchStaffByNo()">
+          </div>
+
+          <!-- Eponumo upalilou (staffSurname) -->
+          <div class="col-sm-3 d-flex align-items-center">
+            <label for="staffSurname" class="mr-2 col-sm-3">Επώνυμο υπαλλήλου:</label>
+            <input type="text" class="form-control" disabled="true" id="staffSurname"
+              [value]="selectedStaff?.staffSurname">
+          </div>
+
+          <!-- Kodikos Pelati (staffName) -->
+          <div class="col-sm-3 d-flex align-items-center">
+            <label for="staffName" class="mr-2 col-sm-3">Όνομα Υπαλλήλου:</label>
+            <input type="text" class="form-control" disabled="true" id="staffName"
+              [value]="selectedStaff?.staffName">
+          </div>
         </div>
-
-
-
-        
-        
-        
-
-
-  <!-- Eponumo upalilou (staffSurname) -->
-  <div class="col-sm-3 d-flex align-items-center">
-    <label for="staffSurname" class="mr-2 col-sm-3">Επώνυμο υπαλλήλου:</label>
-    <input type="text" class="form-control" disabled="true" id="staffSurname" [value]="selectedStaff?.staffSurname">
-  </div>
-
-  <!-- Kodikos Pelati (staffName) -->
-  <div class="col-sm-3 d-flex align-items-center">
-    <label for="staffName" class="mr-2 col-sm-3">Όνομα Υπαλλήλου:</label>
-    <input type="text" class="form-control" disabled="true" id="staffName" [value]="selectedStaff?.staffName">
-  </div>
-</div>
-
 
         <!-- Table -->
         <div class="booking-table">
@@ -145,7 +145,8 @@
                   <label>-----</label>
                 </td>
                 <td>
-                  <input type="text" readonly class="form-control-plaintext label-margin" id="startDate" [value]="date | date:'dd/MM/yyyy'">
+                  <input type="text" readonly class="form-control-plaintext label-margin" id="startDate"
+                    [value]="date | date:'dd/MM/yyyy'">
                 </td>
                 <td>
                   <input type="date" class="form-control" id="endDate">
