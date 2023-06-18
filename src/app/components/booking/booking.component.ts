@@ -10,7 +10,7 @@ import { Staff, IStaff } from 'src/app/models/staff.model';
 import { CampingsService } from 'src/app/services/campings/campings.service';
 import { Camping, ICamping } from 'src/app/models/camping.model';
 import { EmplacementService } from 'src/app/services/emplacement/emplacement.service';
-import { Emplacement, IEmplacement } from 'src/app/models/emplacement.model';
+// import { Emplacement, IEmplacement } from 'src/app/models/emplacement.model';
 import { IBooking } from '../../models/booking.model';
 import { IPayment } from '../../models/payment.model';
 import { Observable  } from 'rxjs';
@@ -28,14 +28,14 @@ export class BookingComponent implements OnInit {
   selectedCustomer: ICustomer | undefined;
   selectedStaffNo: number | null = null;
   selectedStaff: IStaff | undefined;
-  selectedCamping: ICamping | undefined;
-  selectedEmplacement: IEmplacement | undefined;
+  selectedCamping: string | null = null;
+  // selectedEmplacement: IEmplacement | undefined;
   customers: ICustomer[] = [];
   staff: IStaff[] = [];
   searchTimeout: any;
   selectedPayMethod: string | null = null;
   selectedPayCode: number | null = null;
-  campings: string[] = [];
+  campings: ICamping[] = [];
 
   constructor(
     private clientTransactionService: ClientTransactionService,
@@ -109,19 +109,6 @@ export class BookingComponent implements OnInit {
     console.log(this.selectedStaff?.staffName + ' ' + this.selectedStaff?.staffSurname + ' ' + this.selectedStaff?.staffNo);
   }
 
-  // updatePayCode(): void {
-  //   if (this.selectedPayMethod !== null) {
-  //     const payment = this.payments.find((payment: IPayment) => payment.payMethod === this.selectedPayMethod);
-  //     if (payment) {
-  //       this.selectedPayCode = payment.payCode;
-  //     } else {
-  //       this.selectedPayCode = null;
-  //     }
-  //   } else {
-  //     this.selectedPayCode = null;
-  //   }
-  // }
-
   updatePayCode(): void {
     console.log('Printing on console the selected Paymethod:', this.selectedPayMethod)
     if (this.selectedPayMethod !== null) {
@@ -136,10 +123,24 @@ export class BookingComponent implements OnInit {
     }
   }
   
+  updateCampCode(): void {
+    console.log('Selected Camping:', this.selectedCamping); // Debug line
+    if (this.selectedCamping !== null) {
+      const camping = this.campings.find((camping: ICamping) => camping.campName === this.selectedCamping);
+      if (camping) {
+        this.selectedCamping = camping.campCode;
+      } else {
+        this.selectedCamping = null;
+      }
+    } else {
+      this.selectedCamping = null;
+    }
+  }
+  
   
   loadCampings(): void {
     this.campingsService.getAllCampings().subscribe((campings: ICamping[]) => {
-      this.campings = campings.map((camping: ICamping) => camping.campName);
+      this.campings = campings;
     });
   }
 }
