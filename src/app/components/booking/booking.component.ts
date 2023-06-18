@@ -35,6 +35,7 @@ export class BookingComponent implements OnInit {
   searchTimeout: any;
   selectedPayMethod: string | null = null;
   selectedPayCode: number | null = null;
+  campings: string[] = [];
 
   constructor(
     private clientTransactionService: ClientTransactionService,
@@ -136,7 +137,9 @@ export class BookingComponent implements OnInit {
   }
   
   
-
   loadCampings(): void {
+    this.campingsService.getAllCampings().subscribe((campings: ICamping[]) => {
+      this.campings = campings.map((camping: ICamping) => camping.campName);
+    });
   }
 }

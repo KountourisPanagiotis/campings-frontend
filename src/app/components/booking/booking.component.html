@@ -120,10 +120,9 @@
                 <th scope="row">
                   <select id="campname-select" class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected>Select</option>
-                    <option value="1">PAN</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option *ngFor="let campName of campings" [value]="campName">{{ campName }}</option>
                   </select>
+                  
                 </th>
                 <td>
                   <!-- kodikos kataskinosis -->
