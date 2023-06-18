@@ -12,7 +12,7 @@ The Camping Frontend is a web application developed using Angular framework on t
 - Staff Management: Add and update staff members.
 - Campings Management: Add, update, and delete campings.
 - Payment Management: Record and track payments.
-- Category Management: Manage different categories for campgrounds.
+- Category Management: Manage different categories for campings.
 - Statistics: Generate statistics and reports for bookings and payments.
 
 ## Technologies Used
