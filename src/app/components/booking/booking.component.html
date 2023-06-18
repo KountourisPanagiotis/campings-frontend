@@ -117,18 +117,19 @@
     <tbody>
       <tr>
         <!-- Onoma kataskinosis (campName)-->
-        <th scope="row">
-          <select id="campname-select" name="campName"  class="form-select form-select-sm" aria-label=".form-select-sm example"
-            [(ngModel)]="selectedCamping" (change)="updateCampCode()">
-            <option selected>Select</option>
-            <option *ngFor="let camp of campings" [value]="camp.campName">{{ camp.campName }}</option>
-          </select>
-        </th>
-        <td>
-          <!-- kodikos kataskinosis (campCode) -->
-          <input type="text" readonly class="form-control-plaintext label-margin" id="campCode"
-            [value]="selectedCamping || '-----'">
-        </td>
+<th scope="row">
+  <select id="campname-select" name="campName" class="form-select form-select-sm" aria-label=".form-select-sm example"
+    [(ngModel)]="selectedCamping" (change)="updateCampCode()">
+    <option selected>Select</option>
+    <option *ngFor="let camp of campings" [value]="camp.campName">{{ camp.campName }}</option>
+  </select>
+</th>
+<td>
+  <!-- kodikos kataskinosis (campCode) -->
+  <input type="text" readonly class="form-control-plaintext label-margin" id="campCode"
+    [value]="selectedCampCode || '-----'">
+</td>
+
         
                 <!-- emplacement (empNo) -->
                 <td>

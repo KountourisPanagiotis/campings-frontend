@@ -40,6 +40,7 @@ export class BookingComponent implements OnInit {
   campings: ICamping[] = [];
   category: ICategory[] = [];
   selectedCategory: ICategory[] = [];
+  selectedCampCode: string | null = null;
 
   constructor(
     private clientTransactionService: ClientTransactionService,
@@ -130,18 +131,18 @@ export class BookingComponent implements OnInit {
   }
   
   updateCampCode(): void {
-    console.log('Selected Camping:', this.selectedCamping); // Debug line
-    if (this.selectedCamping !== null) {
-      const camping = this.campings.find((camping: ICamping) => camping.campName === this.selectedCamping);
-      if (camping) {
-        this.selectedCamping = camping.campCode;
-      } else {
-        this.selectedCamping = null;
-      }
+  console.log('Selected Camping:', this.selectedCamping); // Debug line
+  if (this.selectedCamping !== null) {
+    const camping = this.campings.find((camping: ICamping) => camping.campName === this.selectedCamping);
+    if (camping) {
+      this.selectedCampCode = camping.campCode;
     } else {
-      this.selectedCamping = null;
+      this.selectedCampCode = null;
     }
+  } else {
+    this.selectedCampCode = null;
   }
+}
   
   
   loadCampings(): void {
