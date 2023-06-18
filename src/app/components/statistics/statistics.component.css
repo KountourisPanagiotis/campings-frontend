@@ -21,3 +21,7 @@
   iframe {
     border: 2px solid black;
   }
+
+  .refresh-rate {
+    font-size: 12rem;
+  }
