@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ClientTransactionService } from '../../services/client-transaction/client-transaction.service';
 import { SpotrentalService } from '../../services/spotrental/spotrental.service';
 import { BookingService } from '../../services/booking/booking.service';
+import { PaymentService } from '../../services/payment/payment.service';
 import { IBooking } from '../../models/booking.model';
+import { IPayment } from '../../models/payment.model';
 
 @Component({
   selector: 'app-booking',
@@ -11,15 +13,19 @@ import { IBooking } from '../../models/booking.model';
 })
 export class BookingComponent implements OnInit {
   bookCode: number = 0; // Initialize bookCode with a default value
+  date: Date = new Date(); // Initialize date with the current date
+  payments: IPayment[] = []; // Holds the payment options
 
   constructor(
     private clientTransactionService: ClientTransactionService,
     private spotrentalService: SpotrentalService,
-    private bookingService: BookingService
+    private bookingService: BookingService,
+    private paymentService: PaymentService
   ) {}
 
   ngOnInit(): void {
     this.generateBookCode();
+    this.loadPayments();
   }
 
   generateBookCode(): void {
@@ -29,12 +35,11 @@ export class BookingComponent implements OnInit {
     });
   }
 
-  getCurrentDate(): string {
-    const currentDate = new Date();
-    const day = currentDate.getDate();
-    const month = currentDate.getMonth() + 1;
-    const year = currentDate.getFullYear();
-
-    return `${day}/${month}/${year}`;
+  loadPayments(): void {
+    this.paymentService.getAllPayments().subscribe((payments: IPayment[]) => {
+      this.payments = payments;
+    });
   }
+
+  // Rest of the component code...
 }
