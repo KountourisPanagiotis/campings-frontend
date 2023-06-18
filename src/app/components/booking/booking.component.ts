@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClientTransactionService } from '../../services/client-transaction/client-transaction.service';
 import { SpotrentalService } from '../../services/spotrental/spotrental.service';
 import { BookingService } from '../../services/booking/booking.service';
@@ -15,8 +16,10 @@ export class BookingComponent implements OnInit {
   bookCode: number = 0; // Initialize bookCode with a default value
   date: Date = new Date(); // Initialize date with the current date
   payments: IPayment[] = []; // Holds the payment options
+  selectedPayCode: number = 0; // Holds the selected payCode value
 
   constructor(
+    private snackBar: MatSnackBar,
     private clientTransactionService: ClientTransactionService,
     private spotrentalService: SpotrentalService,
     private bookingService: BookingService,
@@ -39,6 +42,18 @@ export class BookingComponent implements OnInit {
     this.paymentService.getAllPayments().subscribe((payments: IPayment[]) => {
       this.payments = payments;
     });
+  }
+
+  onSubmit(): void {
+    if (this.selectedPayCode === 0) {
+      this.snackBar.open('Please select a payment method.', 'Close', {
+        duration: 3000
+      });
+      return;
+    }
+
+    // Form submission logic
+    // ...
   }
 
   // Rest of the component code...

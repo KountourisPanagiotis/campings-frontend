@@ -5,7 +5,7 @@
 
   <div class="card mt-4">
     <div class="card-body custom-shadow">
-      <form>
+      <form (ngSubmit)="onSubmit()">
         <!-- ROW 1 -->
         <div class="form-group row">
           <!-- Arithmos kratisis (bookCode)-->
@@ -26,8 +26,8 @@
           <!-- Tropos pliromis (paymethod)-->
           <div class="col-sm-6 d-flex align-items-center">
             <label for="paymethod" class="mr-2 col-sm-3">Τρόπος Πληρωμής :</label>
-            <select id="paymethod" class="form-select form-select-sm" aria-label=".form-select-sm example">
-              <option selected>Select</option>
+            <select id="paymethod" class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="selectedPayCode" name="paymethod">
+              <option selected disabled>Select</option>
               <option *ngFor="let payment of payments" [value]="payment.payCode">{{ payment.payMethod }}</option>
             </select>
           </div>
