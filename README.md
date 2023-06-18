@@ -17,21 +17,22 @@ The Camping Frontend is a web application developed using Angular framework on t
 
 ## Technologies Used
 
-- Front-end: Angular 15.2.8
-- Back-end: Java 11.0.16.1
-- Database: MySQL
-- UI Framework: Angular Material
-- Node.js: v18.13.0
-- npm: v8.19.3
-- RxJS: 7.8.1
-- TypeScript: 4.9.5
+- Front-end: ***Angular*** 15.2.8
+- Back-end: ***Java*** 11.0.16.1
+- Database: ***MySQL***
+- UI Framework: ***Angular Material***
+- ***Node.js***: v18.13.0
+- ***npm***: v8.19.3
+- ***RxJS***: 7.8.1
+- ***TypeScript***: 4.9.5
 
 ## Additional Notes
-- Angular Material Modules: The project utilizes various modules from Angular Material for UI components and styling.
-- HttpClientModule: The HttpClientModule is used for making HTTP requests to communicate with the back-end services.
-- RouterModule and Routes: The application utilizes the RouterModule to define and configure the application routes. The routes array in the app.module.ts file specifies the different paths and their corresponding components.
-- MatSnackBarModule: The MatSnackBarModule from Angular Material is used for displaying pop-up messages (snack bars) in the application.
-- ScrollingModule: This project uses the ScrollingModule to optimize the speed of rendering large tables, by rendering only the items currently in view.
+- ***Angular Material Modules*** : The project utilizes various modules from Angular Material for UI components and styling.
+- ***HttpClientModule*** : The HttpClientModule is used for making HTTP requests to communicate with the back-end services.
+- ***RouterModule*** and ***Routes*** : The application utilizes the RouterModule to define and configure the application routes. The routes array in the app.module.ts file specifies the different paths and their corresponding components.
+- ***MatSnackBarModule*** : The MatSnackBarModule from Angular Material is used for displaying pop-up messages (snack bars) in the application.
+- ***ScrollingModule*** : This project uses the ScrollingModule to optimize the speed of rendering large tables, by rendering only the items currently in view.
+- ***MyBaseUrlService*** : This service provides the base URL for the backend API. Adjust the URL in ***src/app/services/my-base-url/my-base-url.service.ts*** file to match your backend setup.
 
 ## Prerequisites
 
@@ -58,6 +59,7 @@ git clone https://github.com/KountourisPanagiotis/campings-frontend.git
 ```bash
 npm install
 ```
+  - Adjust the base URL:Open ***src/app/services/my-base-url/my-base-url.service.ts*** and adjust the myBaseUrl string to match your backend setup.
   - Start the Angular development server:
 ```bash
 ng serve
