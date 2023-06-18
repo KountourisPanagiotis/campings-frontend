@@ -7,35 +7,42 @@ A [Coding Factory](https://codingfactory.aueb.gr/) @ [AUEB](https://aueb.gr/) Fi
 The Camping Frontend is a web application developed using Angular framework on the front-end and Java on the back-end. The back-end is provided on the [campings-backend](https://github.com/KountourisPanagiotis/campings-backend/blob/main/README.md) repository. The front-end provides a user-friendly interface for managing campgrounds, bookings, customers, staff, payments, and categories. The system allows users to perform various operations such as creating, updating, and deleting records, as well as viewing live statistics and reports.
 
 ## Features
-- Campground Management: Add, update, and delete campgrounds.
 - Booking Management: Create and manage bookings for customers.
 - Customer Management: Manage customer information and track bookings.
 - Staff Management: Add and update staff members.
+- Campings Management: Add, update, and delete campings.
 - Payment Management: Record and track payments.
-- Category Management: Manage different categories for campgrounds.
+- Category Management: Manage different categories for campings.
 - Statistics: Generate statistics and reports for bookings and payments.
 
 ## Technologies Used
 
-- Front-end: Angular
-- Back-end: Java
-- Database: MySQL
-- UI Framework: Angular Material
+- Front-end: ***Angular*** 15.2.8
+- Back-end: ***Java*** 11.0.16.1
+- Database: ***MySQL***
+- Styling and Responsive Design: ***Bootstrap***
+- UI extra tools Framework: ***Angular Material***
+- ***Node.js***: v18.13.0
+- ***npm***: v8.19.3
+- ***RxJS***: 7.8.1
+- ***TypeScript***: 4.9.5
 
 ## Additional Notes
-- Angular Material Modules: The project utilizes various modules from Angular Material for UI components and styling.
-- HttpClientModule: The HttpClientModule is used for making HTTP requests to communicate with the back-end services.
-- RouterModule and Routes: The application utilizes the RouterModule to define and configure the application routes. The routes array in the app.module.ts file specifies the different paths and their corresponding components.
-- MatSnackBarModule: The MatSnackBarModule from Angular Material is used for displaying pop-up messages (snack bars) in the application.
-- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+- ***Angular Material Modules*** : The project utilizes various modules from Angular Material for UI components and styling.
+- ***HttpClientModule*** : The HttpClientModule is used for making HTTP requests to communicate with the back-end services.
+- ***RouterModule*** and ***Routes*** : The application utilizes the RouterModule to define and configure the application routes. The routes array in the app.module.ts file specifies the different paths and their corresponding components.
+- ***MatSnackBarModule*** : The MatSnackBarModule from Angular Material is used for displaying pop-up messages (snack bars) in the application.
+- ***ScrollingModule*** : This project uses the ScrollingModule to optimize the speed of rendering large tables, by rendering only the items currently in view.
+- ***MyBaseUrlService*** : This service provides the base URL for the backend API. Adjust the URL in ***src/app/services/my-base-url/my-base-url.service.ts*** file to match your backend setup.
 
 ## Prerequisites
 
 Before running the application, make sure you have the following software installed:
 
-- Node.js: Install Node.js from the official website.
-- Angular CLI: Install Angular CLI globally using npm.
-- Java Development Kit (JDK)
+- Node.js: v18.13.0. Install Node.js from the official website.
+- Angular CLI: v15.2.8. Install Angular CLI globally using npm.
+- npm: v8.19.3. Usually comes with Node.js installation.
+- Java Development Kit (JDK): OpenJDK version "11.0.16.1" 2022-08-12 LTS
 - MySQL: Install and configure MySQL for the database.
 
 ## Getting Started
@@ -53,6 +60,7 @@ git clone https://github.com/KountourisPanagiotis/campings-frontend.git
 ```bash
 npm install
 ```
+  - Adjust the base URL:Open ***src/app/services/my-base-url/my-base-url.service.ts*** and adjust the myBaseUrl string to match your backend setup.
   - Start the Angular development server:
 ```bash
 ng serve
