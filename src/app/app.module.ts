@@ -6,6 +6,9 @@ import { RouterModule , Routes } from '@angular/router';
 // Angular Material
 import { MatTabsModule } from '@angular/material/tabs';
 
+// Optimize speed of big tables with VirtualScroll. renders items in view only.
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
 // Services for Http
 import { HttpClientModule } from '@angular/common/http';
 import { CustomersService } from './services/customers/customers.service';
@@ -67,7 +70,7 @@ const routes: Routes = [
     BrowserAnimationsModule, // Installed auto by Material Angular
     MatTabsModule, // Material Angular
     MatSnackBarModule, // Material Angular Popup
-
+    ScrollingModule, // Optimize speed of big tables with VirtualScroll. renders items in view only.
   ],
   providers: [
     // Services for Http TODO import and include all services in the providers

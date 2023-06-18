@@ -62,38 +62,40 @@
     </div>
   
     <!-- Table -->
+<!-- Table -->
 <div class="form-group row">
-    <div class="col-sm-12">
-      <table class="table table-striped table-hover mx-auto scrollable-table">
+  <div class="col-sm-12">
+    <cdk-virtual-scroll-viewport itemSize="26" class="scrollable-table">
+      <table class="table table-striped table-hover mx-auto">
         <thead>
           <tr>
             <th scope="col">Κωδικός Πελάτη</th>
             <th scope="col">Όνομα πελάτη</th>
             <th scope="col">Επώνυμο Πελάτη</th>
             <th scope="col">Τηλέφωνο Πελάτη</th>
-            <th scope="col">Actions</th> <!-- New column for actions -->
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let customer of customers">
-            <th scope="row">{{ customer.custCode }}</th>
-            <td>{{ customer.custName }}</td>
-            <td>{{ customer.custSurname }}</td>
-            <td>{{ customer.custPhone }}</td>
-            <td>
+          <ng-container *cdkVirtualFor="let customer of customers">
+            <tr>
+              <th scope="row">{{ customer.custCode }}</th>
+              <td>{{ customer.custName }}</td>
+              <td>{{ customer.custSurname }}</td>
+              <td>{{ customer.custPhone }}</td>
+              <td>
                 <div class="btn-group">
-                    <button class="btn btn-primary" (click)="updateCustomer(customer)">Update</button>
-                    <button class="btn btn-danger" (click)="deleteCustomer(customer)">Delete</button>
+                  <button class="btn btn-primary" (click)="updateCustomer(customer)">Update</button>
+                  <button class="btn btn-danger" (click)="deleteCustomer(customer)">Delete</button>
                 </div>
-            </td>
-          </tr>
+              </td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
-    </div>
+    </cdk-virtual-scroll-viewport>
   </div>
+</div>
   
-
-
-    
   </div>
   
