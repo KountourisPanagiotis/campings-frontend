@@ -2,6 +2,7 @@ export interface IStaff {
   staffNo: number;
   staffName: string;
   staffSurname: string;
+  
 }
 
 export class Staff implements IStaff {
