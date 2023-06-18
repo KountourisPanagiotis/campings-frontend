@@ -76,7 +76,7 @@ const routes: Routes = [
     MatTabsModule, // Material Angular
     MatSnackBarModule, // Material Angular Popup
     ScrollingModule, // Optimize speed of big tables with VirtualScroll. renders items in view only.
-    
+
   ],
   providers: [
     // Services for Http TODO import and include all services in the providers
@@ -90,7 +90,7 @@ const routes: Routes = [
     PaymentService,
     SpotrentalService,
     ClientTransactionService,
-    
+
   ],
   bootstrap: [AppComponent]
 })

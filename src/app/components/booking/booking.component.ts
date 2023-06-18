@@ -13,6 +13,7 @@ import { EmplacementService } from 'src/app/services/emplacement/emplacement.ser
 import { Emplacement, IEmplacement } from 'src/app/models/emplacement.model';
 import { IBooking } from '../../models/booking.model';
 import { IPayment } from '../../models/payment.model';
+import { Observable  } from 'rxjs';
 
 @Component({
   selector: 'app-booking',
@@ -23,12 +24,14 @@ export class BookingComponent implements OnInit {
   bookCode: number = 0;
   date: Date = new Date();
   payments: IPayment[] = [];
-  selectedCustCode: number = 0;
+  selectedCustCode: number | null = null;
   selectedCustomer: ICustomer | undefined;
+  selectedStaffNo: number | null = null;
   selectedStaff: IStaff | undefined;
   selectedCamping: ICamping | undefined;
   selectedEmplacement: IEmplacement | undefined;
   customers: ICustomer[] = [];
+  staff: IStaff[] = [];
   searchTimeout: any;
 
   constructor(
@@ -66,30 +69,43 @@ export class BookingComponent implements OnInit {
   loadCustomers(): void {
     this.customersService.getAllCustomers().subscribe((customers: ICustomer[]) => {
       this.customers = customers;
-      console.log(this.customers);
     });
   }
 
   searchCustomerByCode(): void {
+    console.log('Customer custCode:', this.selectedCustCode);  // Debug line
     clearTimeout(this.searchTimeout);
     this.searchTimeout = setTimeout(() => {
       this.selectedCustomer = this.customers.find((customer: ICustomer) => customer.custCode === this.selectedCustCode);
+      console.log('Selected Customer:', this.selectedCustomer);  // Debug line
     }, 500);
+    console.log(this.selectedCustomer?.custCode + ' ' + this.selectedCustomer?.custName + ' ' + this.selectedCustomer?.custSurname);
   }
-  
+
   startSearchTimeout(): void {
     clearTimeout(this.searchTimeout);
     this.searchTimeout = setTimeout(() => {
       this.selectedCustomer = this.customers.find((customer: ICustomer) => customer.custCode === this.selectedCustCode);
     }, 500);
   }
-  
 
   loadStaff(): void {
-    
+    this.staffService.getAllStaff().subscribe((staff: IStaff[]) => {
+      this.staff = staff;
+      console.log(this.staff[5000]);
+    });
+  }
+
+  searchStaffByNo(): void {
+    console.log('Staff No:', this.selectedStaffNo);  // Debug line
+    clearTimeout(this.searchTimeout);
+    this.searchTimeout = setTimeout(() => {
+      this.selectedStaff = this.staff.find((staff: IStaff) => staff.staffNo === this.selectedStaffNo);
+      console.log('Selected Staff:', this.selectedStaff);  // Debug line
+    }, 500);
+    console.log(this.selectedStaff?.staffName + ' ' + this.selectedStaff?.staffSurname + ' ' + this.selectedStaff?.staffNo);
   }
 
   loadCampings(): void {
-
   }
 }
