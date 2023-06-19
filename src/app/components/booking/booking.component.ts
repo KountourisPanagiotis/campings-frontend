@@ -260,4 +260,36 @@ export class BookingComponent implements OnInit {
     return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
   }
 
+  submitForm (): void {
+    if (
+      // Booking
+      this.bookCode !== null &&
+      this.date !== null &&
+      // Paycode
+      this.selectedPayCode !== null &&
+      // Customer
+      this.selectedCustCode !== null &&
+      this.selectedCustomer?.custSurname !== null  &&
+      this.selectedCustomer?.custName !== null  &&
+      this.selectedCustomer?.custPhone != null  &&
+      // Staff
+      this.selectedStaff?.staffNo ! == null &&
+      this.selectedStaff?.staffName !== null &&
+      this.selectedStaff?.staffSurname !== null &&
+      // Emplacement
+      this.selectedCamping !== null &&
+      this.selectedCampCode !== null &&
+      this.selectedEmpNo !== null &&
+      this.selectedCatCode !== null &&
+      this.selectedArea !== null &&
+      this.selectedUnitCost !== null &&
+      this.startDt !== null &&
+      this.endDt !== null &&
+      this.noPers !== null &&
+      this.totalCost !== null
+    ){
+      
+    }
+  }
+
 }
