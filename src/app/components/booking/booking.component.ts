@@ -295,6 +295,12 @@ export class BookingComponent implements OnInit {
       this.noPers !== null &&
       this.totalCost !== null
     ) {
+
+      // Converting all dates to yyyy-MM-dd format
+      // const formattedStartDt = this.startDt ? this.datePipe.transform(this.parseDate(this.startDt), 'yyyy-MM-dd') : null;
+      // const formattedEndDt = this.endDt ? this.datePipe.transform(new Date(this.endDt), 'yyyy-MM-dd') : null;
+      // const formattedDate = this.date ? this.datePipe.transform(this.date, 'yyyy-MM-dd') : null;
+
       const spotRental: Spotrental = new Spotrental(
         this.bookCode,
         this.selectedCampCode,
@@ -306,7 +312,7 @@ export class BookingComponent implements OnInit {
 
       const booking: IBooking = {
         bookCode: this.bookCode,
-        bookDt: this.date.toString(),
+        bookDt: this.datePipe.transform(this.date, 'yyyy-MM-dd'),
         payCode: this.selectedPayCode!,
         custCode: this.selectedCustCode!,
         staffNo: this.selectedStaff?.staffNo!,
@@ -343,6 +349,7 @@ export class BookingComponent implements OnInit {
       
 
       console.log('Booking:', booking);
+      console.log('SpotRental:', spotRental);
       this.showSnackbarMessage('Booking has been submitted Successfully');
     }
   }
