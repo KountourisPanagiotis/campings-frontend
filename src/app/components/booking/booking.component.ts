@@ -49,6 +49,7 @@ export class BookingComponent implements OnInit {
   startDt: string | null = null;
   endDt: string | null = null;
   noPers: number | null = null;
+  totalCost: number | null = null;
 
   constructor(
     private clientTransactionService: ClientTransactionService,
@@ -144,6 +145,7 @@ export class BookingComponent implements OnInit {
     const camping = this.campings.find((camping: ICamping) => camping.campName === this.selectedCamping);
     if (camping) {
       this.selectedCampCode = camping.campCode;
+      this.calculateTotalCost();
     } else {
       this.selectedCampCode = null;
     }
@@ -178,6 +180,7 @@ export class BookingComponent implements OnInit {
         this.categoryService.getCategoryByCode(this.selectedCatCode).subscribe((category: ICategory) => {
           this.selectedArea = category.areaM2;
           this.selectedUnitCost = category.unitCost;
+          this.calculateTotalCost();
         });
       });
     } else {
@@ -193,6 +196,36 @@ export class BookingComponent implements OnInit {
 
   hideBubbleMessage(): void {
     this.displayBubbleMessage = false;
+  }
+
+  // Method that checks constantly if selectedCamping and selectedCampCode and selectedEmpNo 
+  // and selectedCatCode and selectedArea and selectedUnitCost and startDt
+  // and endDt and noPers are null, else calculates the totalCost.
+  // The total cost is calculated by the selectedUnitCost multiplied by the endDt-startDt difference multiplied by the noPers
+  calculateTotalCost(): void {
+    console.log('Selected Camping:', this.selectedCamping); // Debug line
+    console.log('Selected CampCode:', this.selectedCampCode); // Debug line
+    console.log('Selected EmpNo:', this.selectedEmpNo); // Debug line
+    console.log('Selected CatCode:', this.selectedCatCode); // Debug line
+    console.log('Selected Area:', this.selectedArea); // Debug line
+    console.log('Selected UnitCost:', this.selectedUnitCost); // Debug line
+    console.log('Selected StartDt:', this.startDt); // Debug line
+    console.log('Selected EndDt:', this.endDt); // Debug line
+    console.log('Selected NoPers:', this.noPers); // Debug line
+    
+    if (this.selectedCamping !== null && this.selectedCampCode !== null && this.selectedEmpNo !== null 
+      && this.selectedCatCode !== null && this.selectedArea !== null && this.selectedUnitCost !== null 
+      && this.startDt !== null && this.endDt !== null && this.noPers !== null) {
+      const start = new Date(this.date);
+      const end = new Date(this.endDt);
+      const diff = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
+      this.totalCost = this.selectedUnitCost * diff * this.noPers;
+      console.log('Total Cost:', this.totalCost);  // Debug line
+    } else {
+      this.totalCost = null;
+      console.log('Total Cost: is goin in Else statement');  // Debug line
+    }
+  
   }
 
 }
