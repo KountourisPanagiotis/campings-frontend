@@ -6,6 +6,9 @@ import { RouterModule , Routes } from '@angular/router';
 // Angular Material
 import { MatTabsModule } from '@angular/material/tabs';
 
+// DatePipe for dates transformations
+import { DatePipe } from '@angular/common';
+
 // Optimize speed of big tables with VirtualScroll. renders items in view only.
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
@@ -90,7 +93,8 @@ const routes: Routes = [
     PaymentService,
     SpotrentalService,
     ClientTransactionService,
-
+    DatePipe,
+    
   ],
   bootstrap: [AppComponent]
 })

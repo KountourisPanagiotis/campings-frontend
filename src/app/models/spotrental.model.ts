@@ -2,8 +2,8 @@ export interface ISpotrental {
   bookCode: number;
   campCode: string;
   empNo: number;
-  startDt: string;
-  endDt: string;
+  startDt: string | null;
+  endDt: string | null;
   noPers: number;
   toJSON(): any;
 }

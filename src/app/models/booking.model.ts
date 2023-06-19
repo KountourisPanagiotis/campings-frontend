@@ -1,6 +1,6 @@
 export interface IBooking {
     bookCode: number;
-    bookDt: string;
+    bookDt: string | null;
     payCode: number;
     custCode: number;
     staffNo: number;
