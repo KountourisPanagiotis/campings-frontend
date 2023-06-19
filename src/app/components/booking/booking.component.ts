@@ -168,7 +168,21 @@ export class BookingComponent implements OnInit {
   // Then we set the value of selectedArea at the input with id area.
   // Then we set the value of selectedUnitCost at the input with id unitCost.
   updateCatCodeAreaUnitCost(): void {
-
+    if (this.selectedCampCode !== null && this.selectedEmpNo !== null) {
+      this.emplacementService.getEmplacementByCode(this.selectedCampCode, this.selectedEmpNo).subscribe((emplacement: IEmplacement) => {
+        this.selectedCatCode = emplacement.catCode;
+        this.categoryService.getCategoryByCode(this.selectedCatCode).subscribe((category: ICategory) => {
+          this.selectedArea = category.areaM2;
+          this.selectedUnitCost = category.unitCost;
+        });
+      });
+    } else {
+      this.selectedCatCode = null;
+      this.selectedArea = null;
+      this.selectedUnitCost = null;
+    }
   }
+  
+  
 
 }

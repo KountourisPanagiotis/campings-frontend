@@ -133,20 +133,20 @@
         
                 <!-- emplacement (empNo) -->
                 <td>
-                  <input type="number" min="0" step="1" class="form-control" id="empNo" placeholder="0"
+                  <input type="number" min="0" step="1" class="form-control" id="empNo" placeholder="0" name="empNo"
                   [(ngModel)]="selectedEmpNo" (input)="updateCatCodeAreaUnitCost()">
                 </td>
                 <td>
                   <!-- categories (CatCode) -->
-                  <input class="form-control-plaintext label-margin" readonly id="catCode" >
+                  <input class="form-control-plaintext label-margin" readonly id="catCode" name="catCode" [(ngModel)]="selectedCatCode" >
                 </td>
                 <td>
                   <!-- categories (area) -->
-                  <input class="form-control-plaintext label-margin" readonly id="area" >
+                  <input class="form-control-plaintext label-margin" readonly id="area" name="area" [(ngModel)]="selectedArea" >
                 </td>
                 <td>
                   <!-- unitcost -->
-                  <input class="form-control-plaintext label-margin" readonly id="unitCost" >
+                  <input class="form-control-plaintext label-margin" readonly id="unitCost" name="unitCost" [(ngModel)]="selectedUnitCost" >
                 </td>
                 <td>
                   <input type="text" readonly class="form-control-plaintext label-margin" id="startDate"
