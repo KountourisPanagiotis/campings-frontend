@@ -4,18 +4,17 @@ import { SpotrentalService } from '../../services/spotrental/spotrental.service'
 import { BookingService } from '../../services/booking/booking.service';
 import { PaymentService } from '../../services/payment/payment.service';
 import { CustomersService } from '../../services/customers/customers.service';
-import { Customer, ICustomer } from 'src/app/models/customer.model';
+import { ICustomer } from 'src/app/models/customer.model';
 import { StaffService } from 'src/app/services/staff/staff.service';
-import { Staff, IStaff } from 'src/app/models/staff.model';
+import { IStaff } from 'src/app/models/staff.model';
 import { CampingsService } from 'src/app/services/campings/campings.service';
-import { Camping, ICamping } from 'src/app/models/camping.model';
+import { ICamping } from 'src/app/models/camping.model';
 import { EmplacementService } from 'src/app/services/emplacement/emplacement.service';
-import { Emplacement, IEmplacement } from 'src/app/models/emplacement.model';
+import { IEmplacement } from 'src/app/models/emplacement.model';
 import { IBooking } from '../../models/booking.model';
 import { IPayment } from '../../models/payment.model';
-import { Observable } from 'rxjs';
 import { CategoryService } from 'src/app/services/category/category.service';
-import { Category, ICategory } from 'src/app/models/category.model';
+import { ICategory } from 'src/app/models/category.model';
 import { DatePipe } from '@angular/common'; // date conversion
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ISpotrental, Spotrental } from '../../models/spotrental.model'

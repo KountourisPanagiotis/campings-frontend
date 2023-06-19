@@ -1,7 +1,7 @@
 import { CustomersService } from '../../services/customers/customers.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ICustomer , Customer} from '../../models/customer.model';
-import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar'; // Popup message
+import { MatSnackBar } from '@angular/material/snack-bar'; // Popup message
 
 @Component({
   selector: 'app-customers',
