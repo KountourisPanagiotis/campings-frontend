@@ -156,14 +156,14 @@
                   <input class="form-control-plaintext label-margin" readonly id="unitCost" name="unitCost" [(ngModel)]="selectedUnitCost" >
                 </td>
                 <td>
-                  <input type="text" readonly class="form-control-plaintext label-margin" id="startDate"
-                    [value]="date | date:'dd/MM/yyyy'">
+                  <input type="text" readonly class="form-control-plaintext label-margin" id="startDate" name="startDate" [(ngModel)]="startDt"
+                    >
                 </td>
                 <td>
-                  <input type="date" class="form-control" id="endDate">
+                  <input type="date" class="form-control" id="endDate" name="endDate" name="endDt" [(ngModel)]="endDt" >
                 </td>
                 <td>
-                  <input type="number" min="0" step="1" class="form-control" id="nopers-select" placeholder="0">
+                  <input type="number" min="0" step="1" max="10" class="form-control" id="nopers-select" placeholder="0" name="noPers" [(ngModel)]="noPers">
                 </td>
                 <td>30</td>
               </tr>

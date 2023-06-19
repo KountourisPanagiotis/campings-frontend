@@ -45,6 +45,10 @@ export class BookingComponent implements OnInit {
   selectedCatCode: string | null = null;
   selectedArea: number | null = null;
   selectedUnitCost: number | null = null;
+  displayBubbleMessage: boolean = false;
+  startDt: string | null = null;
+  endDt: string | null = null;
+  noPers: number | null = null;
 
   constructor(
     private clientTransactionService: ClientTransactionService,
@@ -183,16 +187,12 @@ export class BookingComponent implements OnInit {
     }
   }
   
-  
+  showBubbleMessage(): void {
+    this.displayBubbleMessage = true;
+  }
 
-  displayBubbleMessage: boolean = false;
-
-showBubbleMessage(): void {
-  this.displayBubbleMessage = true;
-}
-
-hideBubbleMessage(): void {
-  this.displayBubbleMessage = false;
-}
+  hideBubbleMessage(): void {
+    this.displayBubbleMessage = false;
+  }
 
 }
