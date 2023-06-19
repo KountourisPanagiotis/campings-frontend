@@ -251,7 +251,7 @@ export class BookingComponent implements OnInit {
   
   showSnackbarMessage(message: string): void {
     this.snackBar.open(message, 'Close', {
-      duration: 3000,
+      duration: 6000,
     });
   }
 
