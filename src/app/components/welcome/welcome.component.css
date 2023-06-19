@@ -19,9 +19,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    /* background-attachment: fixed; */
 }
-
 
 /* Transition */
 .welcome-container::after {
@@ -33,9 +31,6 @@ body {
     width: 25%;
     background: linear-gradient(to right, rgba(255, 255, 255, 0), #7ac4f3);
 }
-
-
-
 
 .overlay {
     position: absolute;

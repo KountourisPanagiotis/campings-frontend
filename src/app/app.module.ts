@@ -44,14 +44,12 @@ import { CategoryService } from './services/category/category.service';
 import { PaymentComponent } from './components/payment/payment.component';
 import { EmplacementComponent } from './components/emplacement/emplacement.component';
 
-
 const routes: Routes = [
 	{ path: 'camping', component: CampingComponent },
   { path: 'booking', component: BookingComponent },
   { path: '', component: WelcomeComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
-
 
 @NgModule({
   declarations: [
@@ -67,7 +65,6 @@ const routes: Routes = [
     CategoryComponent,
     PaymentComponent,
     EmplacementComponent,
-
 
   ],
   imports: [

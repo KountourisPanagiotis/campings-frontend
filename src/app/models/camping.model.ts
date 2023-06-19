@@ -1,4 +1,3 @@
-// camping.model.ts
 export interface ICamping {
   campCode: string;
   campName: string;

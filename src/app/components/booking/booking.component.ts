@@ -102,11 +102,9 @@ export class BookingComponent implements OnInit {
   }
 
   searchCustomerByCode(): void {
-    console.log('Customer custCode:', this.selectedCustCode); // Debug line
     clearTimeout(this.searchTimeout);
     this.searchTimeout = setTimeout(() => {
       this.selectedCustomer = this.customers.find((customer: ICustomer) => customer.custCode === this.selectedCustCode);
-      console.log('Selected Customer:', this.selectedCustomer); // Debug line
     }, 500);
     console.log(
       this.selectedCustomer?.custCode +
@@ -132,17 +130,13 @@ export class BookingComponent implements OnInit {
   }
 
   searchStaffByNo(): void {
-    console.log('Staff No:', this.selectedStaffNo); // Debug line
     clearTimeout(this.searchTimeout);
     this.searchTimeout = setTimeout(() => {
       this.selectedStaff = this.staff.find((staff: IStaff) => staff.staffNo === this.selectedStaffNo);
-      console.log('Selected Staff:', this.selectedStaff); // Debug line
     }, 500);
-    console.log(this.selectedStaff?.staffName + ' ' + this.selectedStaff?.staffSurname + ' ' + this.selectedStaff?.staffNo);
   }
 
   updatePayCode(): void {
-    console.log('Printing on console the selected Paymethod:', this.selectedPayMethod);
     if (this.selectedPayMethod !== null) {
       const payment = this.payments.find((payment: IPayment) => payment.payMethod === this.selectedPayMethod);
       if (payment) {
@@ -156,7 +150,6 @@ export class BookingComponent implements OnInit {
   }
 
   updateCampCode(): void {
-    console.log('Selected Camping:', this.selectedCamping); // Debug line
     if (this.selectedCamping !== null) {
       const camping = this.campings.find((camping: ICamping) => camping.campName === this.selectedCamping);
       if (camping) {
@@ -219,10 +212,6 @@ export class BookingComponent implements OnInit {
   // and endDt and noPers are null, else calculates the totalCost.
   // The total cost is calculated by the selectedUnitCost multiplied by the endDt-startDt difference multiplied by the noPers
   calculateTotalCost(): void {
-    console.log('Selected StartDt:', this.startDt); // Debug line
-    console.log('Selected EndDt:', this.endDt); // Debug line
-    console.log('Selected NoPers:', this.noPers); // Debug line
-
     if (
       this.selectedCamping !== null &&
       this.selectedCampCode !== null &&
@@ -242,17 +231,12 @@ export class BookingComponent implements OnInit {
       if (diff < 0) {
         this.totalCost = null;
         this.endDt = this.startDt;
-        console.log('Start Date:', this.startDt); // Debug line')
-        console.log('End Date:', this.endDt); // Debug line
         this.showSnackbarMessage('End date cannot be older than the start date');
       }
 
       this.totalCost = this.selectedUnitCost * diff * this.noPers;
-      console.log('Date Difference:', diff); // Debug line
-      console.log('Total Cost:', this.totalCost); // Debug line
     } else {
       this.totalCost = null;
-      console.log('Total Cost: is going in Else statement'); // Debug line
     }
   }
 
@@ -296,11 +280,6 @@ export class BookingComponent implements OnInit {
       this.totalCost !== null
     ) {
 
-      // Converting all dates to yyyy-MM-dd format
-      // const formattedStartDt = this.startDt ? this.datePipe.transform(this.parseDate(this.startDt), 'yyyy-MM-dd') : null;
-      // const formattedEndDt = this.endDt ? this.datePipe.transform(new Date(this.endDt), 'yyyy-MM-dd') : null;
-      // const formattedDate = this.date ? this.datePipe.transform(this.date, 'yyyy-MM-dd') : null;
-
       const spotRental: ISpotrental = {
         bookCode: this.bookCode,
         campCode: this.selectedCampCode,
@@ -322,7 +301,6 @@ export class BookingComponent implements OnInit {
 
       };
         
-
       const booking: IBooking = {
         bookCode: this.bookCode,
         bookDt: this.datePipe.transform(this.date, 'yyyy-MM-dd'),
@@ -347,22 +325,12 @@ export class BookingComponent implements OnInit {
 
       this.clientTransactionService.insertClientTransaction(clientTransaction).subscribe(
         (data: ClientTransaction) => {
-          console.log('ClientTransaction inserted successfully:', data);
           this.snackBar.open('ClientTransaction inserted successfully', 'Close', { duration: 4000 });
         },
         (error: any) => {
-          console.log('Error inserting ClientTransaction:', error);
           this.snackBar.open('Error inserting ClientTransaction', 'Close', { duration: 4000 }); 
         }
       );
-      
-
-
-
-      
-
-      console.log('Booking:', booking);
-      console.log('SpotRental:', spotRental);
       this.showSnackbarMessage('Booking has been submitted Successfully');
     }
   }

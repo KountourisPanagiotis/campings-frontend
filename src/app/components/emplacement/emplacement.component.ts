@@ -101,7 +101,6 @@ export class EmplacementComponent implements OnInit {
     );
   }
   
-
   deleteEmplacement(emplacement: IEmplacement): void {
     this.emplacementService
       .deleteEmplacement(emplacement.campCode, emplacement.empNo)

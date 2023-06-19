@@ -83,7 +83,6 @@ export class CustomersComponent implements OnInit {
         return; // Exit the function if phone format is invalid
       }
   
-  
       this.customersService.insertCustomer(newCustomer).subscribe(
         (data: ICustomer) => {
           console.log('Customer inserted successfully:', data);
@@ -115,8 +114,6 @@ export class CustomersComponent implements OnInit {
         }
       );
     }
-    
-    
   }
 
   updateCustomer(customer: ICustomer): void {
@@ -126,14 +123,9 @@ export class CustomersComponent implements OnInit {
     this.custName = customer.custName;
     this.custSurname = customer.custSurname;
     this.custPhone = customer.custPhone;
-  
-    
   }
   
-
-  
   deleteCustomer(customer: ICustomer): void {
-    console.log('Customer for deletion' + customer.custCode);
     this.customersService.deleteCustomer(customer.custCode).subscribe(
       () => {
         
@@ -141,11 +133,8 @@ export class CustomersComponent implements OnInit {
         this.loadCustomers(); // Reload the customer list after deletion
       },
       (error: any) => {
-        console.log('Error deleting customer:', error);
         this.snackBar.open('Error deleting customer', 'Close', { duration: 2000 });
       }
     );
   }
-
-  
 }

@@ -45,7 +45,6 @@ export class CustomersService {
 
   deleteCustomer(custCode: number): Observable<ICustomer> {
     const url = `${this.baseUrl}/customer/${custCode}`;
-    console.log('Custcode for deletion customer service:' + custCode ); //////
     return this.http.delete<any>(url).pipe(
       map((data) => Customer.fromJSON(data))
     );

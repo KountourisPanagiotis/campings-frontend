@@ -57,7 +57,7 @@ th[scope="row"] {
   position: absolute;
   top: calc(100% + 5px);
   left: 0;
-  white-space: nowrap; /* Prevents text wrapping */
+  white-space: nowrap;
   background-color: #f0f0f0;
   padding: 5px;
   border-radius: 5px;
