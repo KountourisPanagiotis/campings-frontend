@@ -13,11 +13,13 @@ import { EmplacementService } from 'src/app/services/emplacement/emplacement.ser
 import { Emplacement, IEmplacement } from 'src/app/models/emplacement.model';
 import { IBooking } from '../../models/booking.model';
 import { IPayment } from '../../models/payment.model';
-import { Observable  } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { Category, ICategory } from 'src/app/models/category.model';
 import { DatePipe } from '@angular/common'; // date conversion
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Spotrental } from '../../models/spotrental.model'
+import { ClientTransaction } from 'src/app/models/client.transaction.model';
 
 @Component({
   selector: 'app-booking',
@@ -54,6 +56,7 @@ export class BookingComponent implements OnInit {
   noPers: number | null = null;
   totalCost: number | null = null;
 
+
   constructor(
     private clientTransactionService: ClientTransactionService,
     private spotrentalService: SpotrentalService,
@@ -65,8 +68,7 @@ export class BookingComponent implements OnInit {
     private campingsService: CampingsService,
     private categoryService: CategoryService,
     private datePipe: DatePipe, // Date conversion
-    private snackBar: MatSnackBar,
-
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -100,13 +102,19 @@ export class BookingComponent implements OnInit {
   }
 
   searchCustomerByCode(): void {
-    console.log('Customer custCode:', this.selectedCustCode);  // Debug line
+    console.log('Customer custCode:', this.selectedCustCode); // Debug line
     clearTimeout(this.searchTimeout);
     this.searchTimeout = setTimeout(() => {
       this.selectedCustomer = this.customers.find((customer: ICustomer) => customer.custCode === this.selectedCustCode);
-      console.log('Selected Customer:', this.selectedCustomer);  // Debug line
+      console.log('Selected Customer:', this.selectedCustomer); // Debug line
     }, 500);
-    console.log(this.selectedCustomer?.custCode + ' ' + this.selectedCustomer?.custName + ' ' + this.selectedCustomer?.custSurname);
+    console.log(
+      this.selectedCustomer?.custCode +
+        ' ' +
+        this.selectedCustomer?.custName +
+        ' ' +
+        this.selectedCustomer?.custSurname
+    );
   }
 
   startSearchTimeout(): void {
@@ -124,17 +132,17 @@ export class BookingComponent implements OnInit {
   }
 
   searchStaffByNo(): void {
-    console.log('Staff No:', this.selectedStaffNo);  // Debug line
+    console.log('Staff No:', this.selectedStaffNo); // Debug line
     clearTimeout(this.searchTimeout);
     this.searchTimeout = setTimeout(() => {
       this.selectedStaff = this.staff.find((staff: IStaff) => staff.staffNo === this.selectedStaffNo);
-      console.log('Selected Staff:', this.selectedStaff);  // Debug line
+      console.log('Selected Staff:', this.selectedStaff); // Debug line
     }, 500);
     console.log(this.selectedStaff?.staffName + ' ' + this.selectedStaff?.staffSurname + ' ' + this.selectedStaff?.staffNo);
   }
 
   updatePayCode(): void {
-    console.log('Printing on console the selected Paymethod:', this.selectedPayMethod)
+    console.log('Printing on console the selected Paymethod:', this.selectedPayMethod);
     if (this.selectedPayMethod !== null) {
       const payment = this.payments.find((payment: IPayment) => payment.payMethod === this.selectedPayMethod);
       if (payment) {
@@ -146,23 +154,22 @@ export class BookingComponent implements OnInit {
       this.selectedPayCode = null;
     }
   }
-  
+
   updateCampCode(): void {
-  console.log('Selected Camping:', this.selectedCamping); // Debug line
-  if (this.selectedCamping !== null) {
-    const camping = this.campings.find((camping: ICamping) => camping.campName === this.selectedCamping);
-    if (camping) {
-      this.selectedCampCode = camping.campCode;
-      this.calculateTotalCost();
+    console.log('Selected Camping:', this.selectedCamping); // Debug line
+    if (this.selectedCamping !== null) {
+      const camping = this.campings.find((camping: ICamping) => camping.campName === this.selectedCamping);
+      if (camping) {
+        this.selectedCampCode = camping.campCode;
+        this.calculateTotalCost();
+      } else {
+        this.selectedCampCode = null;
+      }
     } else {
       this.selectedCampCode = null;
     }
-  } else {
-    this.selectedCampCode = null;
   }
-}
-  
-  
+
   loadCampings(): void {
     this.campingsService.getAllCampings().subscribe((campings: ICamping[]) => {
       this.campings = campings;
@@ -175,7 +182,6 @@ export class BookingComponent implements OnInit {
     });
   }
 
-
   // using the selectedCampCode and the selectedEmpNo we will find through emplacementsService the selectedCatCode.
   // then with the catcode known, through categoriesService we can find the selectedArea and the selectedUnitCost.
   // Then we set the value of selectedCatCode at the input with id catCode.
@@ -183,21 +189,23 @@ export class BookingComponent implements OnInit {
   // Then we set the value of selectedUnitCost at the input with id unitCost.
   updateCatCodeAreaUnitCost(): void {
     if (this.selectedCampCode !== null && this.selectedEmpNo !== null) {
-      this.emplacementService.getEmplacementByCode(this.selectedCampCode, this.selectedEmpNo).subscribe((emplacement: IEmplacement) => {
-        this.selectedCatCode = emplacement.catCode;
-        this.categoryService.getCategoryByCode(this.selectedCatCode).subscribe((category: ICategory) => {
-          this.selectedArea = category.areaM2;
-          this.selectedUnitCost = category.unitCost;
-          this.calculateTotalCost();
+      this.emplacementService
+        .getEmplacementByCode(this.selectedCampCode, this.selectedEmpNo)
+        .subscribe((emplacement: IEmplacement) => {
+          this.selectedCatCode = emplacement.catCode;
+          this.categoryService.getCategoryByCode(this.selectedCatCode).subscribe((category: ICategory) => {
+            this.selectedArea = category.areaM2;
+            this.selectedUnitCost = category.unitCost;
+            this.calculateTotalCost();
+          });
         });
-      });
     } else {
       this.selectedCatCode = null;
       this.selectedArea = null;
       this.selectedUnitCost = null;
     }
   }
-  
+
   showBubbleMessage(): void {
     this.displayBubbleMessage = true;
   }
@@ -206,7 +214,7 @@ export class BookingComponent implements OnInit {
     this.displayBubbleMessage = false;
   }
 
-  // Method that checks constantly if selectedCamping and selectedCampCode and selectedEmpNo 
+  // Method that checks constantly if selectedCamping and selectedCampCode and selectedEmpNo
   // and selectedCatCode and selectedArea and selectedUnitCost and startDt
   // and endDt and noPers are null, else calculates the totalCost.
   // The total cost is calculated by the selectedUnitCost multiplied by the endDt-startDt difference multiplied by the noPers
@@ -229,7 +237,7 @@ export class BookingComponent implements OnInit {
       const start = this.parseDate(this.startDt); // Convert startDt to a Date object
       const end = new Date(this.endDt);
       const diff = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
-      
+
       // Check if the date diff is less than zero, set the endDt to startDt and show MatSnackBar message
       if (diff < 0) {
         this.totalCost = null;
@@ -239,7 +247,6 @@ export class BookingComponent implements OnInit {
         this.showSnackbarMessage('End date cannot be older than the start date');
       }
 
-
       this.totalCost = this.selectedUnitCost * diff * this.noPers;
       console.log('Date Difference:', diff); // Debug line
       console.log('Total Cost:', this.totalCost); // Debug line
@@ -248,7 +255,7 @@ export class BookingComponent implements OnInit {
       console.log('Total Cost: is going in Else statement'); // Debug line
     }
   }
-  
+
   showSnackbarMessage(message: string): void {
     this.snackBar.open(message, 'Close', {
       duration: 6000,
@@ -260,7 +267,7 @@ export class BookingComponent implements OnInit {
     return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
   }
 
-  submitForm (): void {
+  submitForm(): void {
     if (
       // Booking
       this.bookCode !== null &&
@@ -269,11 +276,11 @@ export class BookingComponent implements OnInit {
       this.selectedPayCode !== null &&
       // Customer
       this.selectedCustCode !== null &&
-      this.selectedCustomer?.custSurname !== null  &&
-      this.selectedCustomer?.custName !== null  &&
-      this.selectedCustomer?.custPhone != null  &&
+      this.selectedCustomer?.custSurname !== null &&
+      this.selectedCustomer?.custName !== null &&
+      this.selectedCustomer?.custPhone != null &&
       // Staff
-      this.selectedStaff?.staffNo ! == null &&
+      this.selectedStaff?.staffNo !== null &&
       this.selectedStaff?.staffName !== null &&
       this.selectedStaff?.staffSurname !== null &&
       // Emplacement
@@ -287,9 +294,56 @@ export class BookingComponent implements OnInit {
       this.endDt !== null &&
       this.noPers !== null &&
       this.totalCost !== null
-    ){
+    ) {
+      const spotRental: Spotrental = new Spotrental(
+        this.bookCode,
+        this.selectedCampCode,
+        this.selectedEmpNo,
+        this.startDt,
+        this.endDt,
+        this.noPers!
+      );
+
+      const booking: IBooking = {
+        bookCode: this.bookCode,
+        bookDt: this.date.toString(),
+        payCode: this.selectedPayCode!,
+        custCode: this.selectedCustCode!,
+        staffNo: this.selectedStaff?.staffNo!,
+
+        toJSON(): any {
+          return {
+            bookCode: this.bookCode,
+            bookDt: this.bookDt,
+            payCode: this.payCode,
+            custCode: this.custCode,
+            staffNo: this.staffNo
+          };
+        }
+      };
+
+      // Creating a client transaction from this general booking
+      // having a array of spotrentals
+      const clientTransaction: ClientTransaction = new ClientTransaction(booking , [spotRental]);
+
+      this.clientTransactionService.insertClientTransaction(clientTransaction).subscribe(
+        (data: ClientTransaction) => {
+          console.log('ClientTransaction inserted successfully:', data);
+          this.snackBar.open('ClientTransaction inserted successfully', 'Close', { duration: 2000 });
+        },
+        (error: any) => {
+          console.log('Error inserting ClientTransaction:', error);
+          this.snackBar.open('Error inserting ClientTransaction', 'Close', { duration: 2000 }); 
+        }
+      );
       
+
+
+
+      
+
+      console.log('Booking:', booking);
+      this.showSnackbarMessage('Booking has been submitted Successfully');
     }
   }
-
 }
