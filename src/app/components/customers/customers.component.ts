@@ -133,11 +133,10 @@ export class CustomersComponent implements OnInit {
 
   
   deleteCustomer(customer: ICustomer): void {
-    // Perform the delete operation using the customer ID or any other identifier
-    // Call the delete method from the customersService
+    console.log('Customer for deletion' + customer.custCode);
     this.customersService.deleteCustomer(customer.custCode).subscribe(
       () => {
-        console.log('Customer deleted successfully');
+        
         this.snackBar.open('Customer deleted successfully', 'Close', { duration: 2000 });
         this.loadCustomers(); // Reload the customer list after deletion
       },
@@ -147,5 +146,6 @@ export class CustomersComponent implements OnInit {
       }
     );
   }
+
   
 }
