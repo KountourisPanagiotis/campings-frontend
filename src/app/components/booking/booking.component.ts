@@ -185,4 +185,14 @@ export class BookingComponent implements OnInit {
   
   
 
+  displayBubbleMessage: boolean = false;
+
+showBubbleMessage(): void {
+  this.displayBubbleMessage = true;
+}
+
+hideBubbleMessage(): void {
+  this.displayBubbleMessage = false;
+}
+
 }

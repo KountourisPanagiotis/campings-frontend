@@ -133,8 +133,15 @@
         
                 <!-- emplacement (empNo) -->
                 <td>
-                  <input type="number" min="0" step="1" class="form-control" id="empNo" placeholder="0" name="empNo"
-                  [(ngModel)]="selectedEmpNo" (input)="updateCatCodeAreaUnitCost()">
+                  <div class="input-container">
+                    <input type="number" min="0" step="1" class="form-control" id="empNo" placeholder="0" name="empNo"
+                      [(ngModel)]="selectedEmpNo" (input)="updateCatCodeAreaUnitCost()" (focus)="showBubbleMessage()"
+                      (blur)="hideBubbleMessage()">
+                    <div class="bubble-message" [ngClass]="{ 'show': displayBubbleMessage }">
+                      1 - 14 is Category A
+                    </div>
+                  </div>
+                  
                 </td>
                 <td>
                   <!-- categories (CatCode) -->
