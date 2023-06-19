@@ -348,11 +348,11 @@ export class BookingComponent implements OnInit {
       this.clientTransactionService.insertClientTransaction(clientTransaction).subscribe(
         (data: ClientTransaction) => {
           console.log('ClientTransaction inserted successfully:', data);
-          this.snackBar.open('ClientTransaction inserted successfully', 'Close', { duration: 2000 });
+          this.snackBar.open('ClientTransaction inserted successfully', 'Close', { duration: 4000 });
         },
         (error: any) => {
           console.log('Error inserting ClientTransaction:', error);
-          this.snackBar.open('Error inserting ClientTransaction', 'Close', { duration: 2000 }); 
+          this.snackBar.open('Error inserting ClientTransaction', 'Close', { duration: 4000 }); 
         }
       );
       
