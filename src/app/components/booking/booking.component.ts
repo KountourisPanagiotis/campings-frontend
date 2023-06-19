@@ -17,6 +17,7 @@ import { Observable  } from 'rxjs';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { Category, ICategory } from 'src/app/models/category.model';
 import { DatePipe } from '@angular/common'; // date conversion
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-booking',
@@ -64,6 +65,8 @@ export class BookingComponent implements OnInit {
     private campingsService: CampingsService,
     private categoryService: CategoryService,
     private datePipe: DatePipe, // Date conversion
+    private snackBar: MatSnackBar,
+
   ) {}
 
   ngOnInit(): void {
@@ -211,7 +214,7 @@ export class BookingComponent implements OnInit {
     console.log('Selected StartDt:', this.startDt); // Debug line
     console.log('Selected EndDt:', this.endDt); // Debug line
     console.log('Selected NoPers:', this.noPers); // Debug line
-  
+
     if (
       this.selectedCamping !== null &&
       this.selectedCampCode !== null &&
@@ -226,6 +229,17 @@ export class BookingComponent implements OnInit {
       const start = this.parseDate(this.startDt); // Convert startDt to a Date object
       const end = new Date(this.endDt);
       const diff = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
+      
+      // Check if the date diff is less than zero, set the endDt to startDt and show MatSnackBar message
+      if (diff < 0) {
+        this.totalCost = null;
+        this.endDt = this.startDt;
+        console.log('Start Date:', this.startDt); // Debug line')
+        console.log('End Date:', this.endDt); // Debug line
+        this.showSnackbarMessage('End date cannot be older than the start date');
+      }
+
+
       this.totalCost = this.selectedUnitCost * diff * this.noPers;
       console.log('Date Difference:', diff); // Debug line
       console.log('Total Cost:', this.totalCost); // Debug line
@@ -235,6 +249,12 @@ export class BookingComponent implements OnInit {
     }
   }
   
+  showSnackbarMessage(message: string): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+    });
+  }
+
   private parseDate(dateStr: string): Date {
     const [day, month, year] = dateStr.split('/');
     return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
