@@ -156,8 +156,15 @@
                   <input class="form-control-plaintext label-margin" readonly id="unitCost" name="unitCost" [(ngModel)]="selectedUnitCost" >
                 </td>
                 <td>
-                  <input type="text" readonly class="form-control-plaintext label-margin" id="startDate" name="startDate" [value]="date | date:'dd/MM/yyyy'"
-                    >
+                  <!-- Hmerominia (Date) -->
+
+
+                  <input type="text" readonly class="form-control-plaintext label-margin" id="startDt" name="startDt" [(ngModel)]="startDt">
+
+
+
+
+
                 </td>
                 <td>
                   <input type="date" class="form-control" id="endDate" name="endDate" name="endDt" [(ngModel)]="endDt" (change)="calculateTotalCost()" >

@@ -16,11 +16,13 @@ import { IPayment } from '../../models/payment.model';
 import { Observable  } from 'rxjs';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { Category, ICategory } from 'src/app/models/category.model';
+import { DatePipe } from '@angular/common'; // date conversion
 
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.css']
+  styleUrls: ['./booking.component.css'],
+  providers: [DatePipe],
 })
 export class BookingComponent implements OnInit {
   bookCode: number = 0;
@@ -61,6 +63,7 @@ export class BookingComponent implements OnInit {
     private emplacementService: EmplacementService,
     private campingsService: CampingsService,
     private categoryService: CategoryService,
+    private datePipe: DatePipe, // Date conversion
   ) {}
 
   ngOnInit(): void {
@@ -70,6 +73,8 @@ export class BookingComponent implements OnInit {
     this.loadStaff();
     this.loadCampings();
     this.loadCategories();
+    const currentDate = new Date();
+    this.startDt = this.datePipe.transform(currentDate, 'dd/MM/yyyy');
   }
 
   generateBookCode(): void {
@@ -203,29 +208,36 @@ export class BookingComponent implements OnInit {
   // and endDt and noPers are null, else calculates the totalCost.
   // The total cost is calculated by the selectedUnitCost multiplied by the endDt-startDt difference multiplied by the noPers
   calculateTotalCost(): void {
-    console.log('Selected Camping:', this.selectedCamping); // Debug line
-    console.log('Selected CampCode:', this.selectedCampCode); // Debug line
-    console.log('Selected EmpNo:', this.selectedEmpNo); // Debug line
-    console.log('Selected CatCode:', this.selectedCatCode); // Debug line
-    console.log('Selected Area:', this.selectedArea); // Debug line
-    console.log('Selected UnitCost:', this.selectedUnitCost); // Debug line
     console.log('Selected StartDt:', this.startDt); // Debug line
     console.log('Selected EndDt:', this.endDt); // Debug line
     console.log('Selected NoPers:', this.noPers); // Debug line
-    
-    if (this.selectedCamping !== null && this.selectedCampCode !== null && this.selectedEmpNo !== null 
-      && this.selectedCatCode !== null && this.selectedArea !== null && this.selectedUnitCost !== null 
-      && this.startDt !== null && this.endDt !== null && this.noPers !== null) {
-      const start = new Date(this.date);
+  
+    if (
+      this.selectedCamping !== null &&
+      this.selectedCampCode !== null &&
+      this.selectedEmpNo !== null &&
+      this.selectedCatCode !== null &&
+      this.selectedArea !== null &&
+      this.selectedUnitCost !== null &&
+      this.startDt !== null &&
+      this.endDt !== null &&
+      this.noPers !== null
+    ) {
+      const start = this.parseDate(this.startDt); // Convert startDt to a Date object
       const end = new Date(this.endDt);
       const diff = (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
       this.totalCost = this.selectedUnitCost * diff * this.noPers;
-      console.log('Total Cost:', this.totalCost);  // Debug line
+      console.log('Date Difference:', diff); // Debug line
+      console.log('Total Cost:', this.totalCost); // Debug line
     } else {
       this.totalCost = null;
-      console.log('Total Cost: is goin in Else statement');  // Debug line
+      console.log('Total Cost: is going in Else statement'); // Debug line
     }
+  }
   
+  private parseDate(dateStr: string): Date {
+    const [day, month, year] = dateStr.split('/');
+    return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
   }
 
 }
