@@ -18,7 +18,7 @@ import { CategoryService } from 'src/app/services/category/category.service';
 import { Category, ICategory } from 'src/app/models/category.model';
 import { DatePipe } from '@angular/common'; // date conversion
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Spotrental } from '../../models/spotrental.model'
+import { ISpotrental, Spotrental } from '../../models/spotrental.model'
 import { ClientTransaction } from 'src/app/models/client.transaction.model';
 
 @Component({
@@ -301,14 +301,27 @@ export class BookingComponent implements OnInit {
       // const formattedEndDt = this.endDt ? this.datePipe.transform(new Date(this.endDt), 'yyyy-MM-dd') : null;
       // const formattedDate = this.date ? this.datePipe.transform(this.date, 'yyyy-MM-dd') : null;
 
-      const spotRental: Spotrental = new Spotrental(
-        this.bookCode,
-        this.selectedCampCode,
-        this.selectedEmpNo,
-        this.startDt,
-        this.endDt,
-        this.noPers!
-      );
+      const spotRental: ISpotrental = {
+        bookCode: this.bookCode,
+        campCode: this.selectedCampCode,
+        empNo: this.selectedEmpNo,
+        startDt: this.datePipe.transform(this.parseDate(this.startDt), 'yyyy-MM-dd'),
+        endDt: this.endDt,
+        noPers: this.noPers,
+        
+        toJSON(): any {
+          return {
+            bookCode: this.bookCode,
+            campCode: this.campCode,
+            empNo: this.empNo,
+            startDt: this.startDt,
+            endDt: this.endDt,
+            noPers: this.noPers
+          };
+        }
+
+      };
+        
 
       const booking: IBooking = {
         bookCode: this.bookCode,
