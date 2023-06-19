@@ -42,35 +42,34 @@
           </div>
         </div>
 
-       <!-- ROW 3 -->
-<!-- Stoixeia Pelati -->
-<div class="form-group row">
-  <!-- Kodikos Pelati (custCode) -->
-  <div class="col-sm-3 d-flex align-items-center">
-    <label for="custCode" class="mr-2 col-sm-3">Κωδικός πελάτη:</label>
-    <input type="number" min="0" step="1" class="form-control" id="custCode" name="custCode" placeholder="1 - 4846"
-      [(ngModel)]="selectedCustCode" (input)="searchCustomerByCode()">
-  </div>
+        <!-- ROW 3 -->
+        <!-- Stoixeia Pelati -->
+        <div class="form-group row">
+          <!-- Kodikos Pelati (custCode) -->
+          <div class="col-sm-3 d-flex align-items-center">
+            <label for="custCode" class="mr-2 col-sm-3">Κωδικός πελάτη:</label>
+            <input type="number" min="0" step="1" class="form-control" id="custCode" name="custCode" placeholder="1 - 4846"
+              [(ngModel)]="selectedCustCode" (input)="searchCustomerByCode()">
+          </div>
 
-  <!-- Eponumo pelati (custSurname) -->
-  <div class="col-sm-3 d-flex align-items-center">
-    <label for="custSurname" class="mr-2 col-sm-3">Επώνυμο πελάτη:</label>
-    <input type="text" class="form-control" id="custSurname" disabled="true" name="custSurname" [value]="selectedCustomer?.custSurname">
-  </div>
+          <!-- Eponumo pelati (custSurname) -->
+          <div class="col-sm-3 d-flex align-items-center">
+            <label for="custSurname" class="mr-2 col-sm-3">Επώνυμο πελάτη:</label>
+            <input type="text" class="form-control" id="custSurname" disabled="true" name="custSurname" [value]="selectedCustomer?.custSurname">
+          </div>
 
-  <!-- Onoma pelati (custName) -->
-  <div class="col-sm-3 d-flex align-items-center">
-    <label for="custName" class="mr-2 col-sm-3">Όνομα πελάτη:</label>
-    <input type="text" class="form-control" id="custName" disabled="true" name="custName" [value]="selectedCustomer?.custName">
-  </div>
+          <!-- Onoma pelati (custName) -->
+          <div class="col-sm-3 d-flex align-items-center">
+            <label for="custName" class="mr-2 col-sm-3">Όνομα πελάτη:</label>
+            <input type="text" class="form-control" id="custName" disabled="true" name="custName" [value]="selectedCustomer?.custName">
+          </div>
 
-  <!-- Tilefono (custPhone) -->
-  <div class="col-sm-3 d-flex align-items-center">
-    <label for="custPhone" class="mr-2 col-sm-3">Τηλέφωνο πελάτη:</label>
-    <input type="text" class="form-control" id="custPhone" disabled="true" name="custPhone" [value]="selectedCustomer?.custPhone">
-  </div>
-</div>
-
+          <!-- Tilefono (custPhone) -->
+          <div class="col-sm-3 d-flex align-items-center">
+            <label for="custPhone" class="mr-2 col-sm-3">Τηλέφωνο πελάτη:</label>
+            <input type="text" class="form-control" id="custPhone" disabled="true" name="custPhone" [value]="selectedCustomer?.custPhone">
+          </div>
+        </div>
 
         <!-- ROW 4 -->
         <!-- Stoixeia upalilou -->
@@ -97,40 +96,38 @@
           </div>
         </div>
 
-       <!-- Table -->
-<div class="booking-table">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">Όνομα Κατασκήνωσης</th>
-        <th scope="col">Κωδικός Κατασκήνωσης</th>
-        <th scope="col">Αριθμός Θέσης</th>
-        <th scope="col">Κατηγορία θέσης</th>
-        <th scope="col">Έκταση Θέσης M<sup>2</sup></th>
-        <th scope="col">Κόστος Θέσης</th>
-        <th scope="col">Ημερομηνία Έναρξης</th>
-        <th scope="col">Ημερομηνία Λήξης</th>
-        <th scope="col">Αριθμός Ατόμων</th>
-        <th scope="col">Κόστος (Ευρώ)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <!-- Onoma kataskinosis (campName)-->
-<th scope="row">
-  <select id="campname-select" name="campName" class="form-select form-select-sm" aria-label=".form-select-sm example"
-    [(ngModel)]="selectedCamping" (change)="updateCampCode()">
-    <option selected>Select</option>
-    <option *ngFor="let camp of campings" [value]="camp.campName">{{ camp.campName }}</option>
-  </select>
-</th>
-<td>
-  <!-- kodikos kataskinosis (campCode) -->
-  <input type="text" readonly class="form-control-plaintext label-margin" id="campCode"
-    [value]="selectedCampCode || '-----'">
-</td>
-
-        
+        <!-- Table -->
+        <div class="booking-table">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Όνομα Κατασκήνωσης</th>
+                <th scope="col">Κωδικός Κατασκήνωσης</th>
+                <th scope="col">Αριθμός Θέσης</th>
+                <th scope="col">Κατηγορία θέσης</th>
+                <th scope="col">Έκταση Θέσης M<sup>2</sup></th>
+                <th scope="col">Κόστος Θέσης</th>
+                <th scope="col">Ημερομηνία Έναρξης</th>
+                <th scope="col">Ημερομηνία Λήξης</th>
+                <th scope="col">Αριθμός Ατόμων</th>
+                <th scope="col">Κόστος (Ευρώ)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <!-- Onoma kataskinosis (campName) -->
+                <td>
+                  <select id="campname-select" name="campName" class="form-select form-select-sm" aria-label=".form-select-sm example"
+                    [(ngModel)]="selectedCamping" (change)="updateCampCode()">
+                    <option selected>Select</option>
+                    <option *ngFor="let camp of campings" [value]="camp.campName">{{ camp.campName }}</option>
+                  </select>
+                </td>
+                <!-- kodikos kataskinosis (campCode) -->
+                <td>
+                  <input type="text" readonly class="form-control-plaintext label-margin" id="campCode"
+                    [value]="selectedCampCode || '-----'">
+                </td>
                 <!-- emplacement (empNo) -->
                 <td>
                   <div class="input-container">
@@ -141,44 +138,35 @@
                       1 - 14 is Category A
                     </div>
                   </div>
-                  
                 </td>
+                <!-- categories (CatCode) -->
                 <td>
-                  <!-- categories (CatCode) -->
-                  <input class="form-control-plaintext label-margin" readonly id="catCode" name="catCode" [(ngModel)]="selectedCatCode" >
+                  <input class="form-control-plaintext label-margin" readonly id="catCode" name="catCode" [(ngModel)]="selectedCatCode">
                 </td>
+                <!-- categories (area) -->
                 <td>
-                  <!-- categories (area) -->
-                  <input class="form-control-plaintext label-margin" readonly id="area" name="area" [(ngModel)]="selectedArea" >
+                  <input class="form-control-plaintext label-margin" readonly id="area" name="area" [(ngModel)]="selectedArea">
                 </td>
+                <!-- unitcost -->
                 <td>
-                  <!-- unitcost -->
-                  <input class="form-control-plaintext label-margin" readonly id="unitCost" name="unitCost" [(ngModel)]="selectedUnitCost" >
+                  <input class="form-control-plaintext label-margin" readonly id="unitCost" name="unitCost" [(ngModel)]="selectedUnitCost">
                 </td>
+                <!-- Hmerominia (Date) -->
                 <td>
-                  <!-- Hmerominia (Date) -->
-
-
                   <input type="text" readonly class="form-control-plaintext label-margin" id="startDt" name="startDt" [(ngModel)]="startDt">
-
-
-
-
-
                 </td>
                 <td>
-                  <input type="date" class="form-control" id="endDate" name="endDate" name="endDt" [(ngModel)]="endDt" (change)="calculateTotalCost()" >
+                  <input type="date" class="form-control" id="endDate" name="endDate" [(ngModel)]="endDt" (change)="calculateTotalCost()">
                 </td>
                 <td>
                   <input type="number" min="0" step="1" max="10" class="form-control" id="nopers-select" placeholder="0" name="noPers" [(ngModel)]="noPers"
-                  (change)="calculateTotalCost()">
+                    (change)="calculateTotalCost()">
                 </td>
                 <td>{{ totalCost || '0' }}</td>
               </tr>
             </tbody>
           </table>
         </div>
-
 
         <!-- Submit button -->
         <div class="text-center mt-4">
