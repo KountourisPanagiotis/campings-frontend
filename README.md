@@ -30,6 +30,8 @@ The Camping Frontend is a web application developed using Angular framework on t
   </tr>
 </table>
 
+The site is hosted live on github pages [here](https://kountourispanagiotis.github.io/campings-frontend/)
+
 
 ## Features
 - Booking Management: Create and manage booking for customers. (Each booking may consist of many emplacement spot arrangements)
