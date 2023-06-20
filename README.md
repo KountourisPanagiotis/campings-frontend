@@ -6,6 +6,31 @@ A [Coding Factory](https://codingfactory.aueb.gr/) @ [AUEB](https://aueb.gr/) Fi
 ## Description
 The Camping Frontend is a web application developed using Angular framework on the front-end and Java on the back-end. The back-end is provided on the [campings-backend](https://github.com/KountourisPanagiotis/campings-backend/blob/main/README.md) repository. The front-end provides a user-friendly interface for managing bookings, customers, staff, campings, payments, emplacements and categories. The system allows users to perform various operations such as creating, updating, and deleting records, as well as viewing live statistics and reports.
 
+## Preview
+<table>
+  <tr>
+    <td><img src='URL_to_image1' alt='Image 1'></td>
+    <td><img src='URL_to_image2' alt='Image 2'></td>
+    <td><img src='URL_to_image3' alt='Image 3'></td>
+  </tr>
+  <tr>
+    <td><img src='URL_to_image4' alt='Image 4'></td>
+    <td><img src='URL_to_image5' alt='Image 5'></td>
+    <td><img src='URL_to_image6' alt='Image 6'></td>
+  </tr>
+  <tr>
+    <td><img src='URL_to_image7' alt='Image 7'></td>
+    <td><img src='URL_to_image8' alt='Image 8'></td>
+    <td><img src='URL_to_image9' alt='Image 9'></td>
+  </tr>
+  <tr>
+    <td><img src='URL_to_image10' alt='Image 10'></td>
+    <td><img src='URL_to_image11' alt='Image 11'></td>
+    <td><img src='URL_to_image12' alt='Image 12'></td>
+  </tr>
+</table>
+
+
 ## Features
 - Booking Management: Create and manage booking for customers. (Each booking may consist of many emplacement spot arrangements)
 - Customer Management: Manage customer information.
