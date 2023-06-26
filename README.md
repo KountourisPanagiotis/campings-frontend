@@ -41,7 +41,8 @@ The site is hosted live on github pages [here](https://kountourispanagiotis.gith
 - Payment Management: insert or alter payment methods.
 - Category Management: Manage different categories for camping spots.
 - Emplacements Management: Management of combination of campings and categories for all the company through a unified system. 
-- Statistics: Generate Live Power Bi statistics and reports for bookings and payments. Live connection to database. 60 mins refresh rate.  
+- Statistics: Generate Live Power Bi statistics and reports for bookings and payments. Live connection to database. 60 mins refresh rate.
+- Quality of life feature : In order to minimize errors, the user-input is mainly executed through dropdown-lists.
 
 ## Technologies Used
 
